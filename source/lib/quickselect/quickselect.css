@@ -1,0 +1,232 @@
+.widget-quickselect {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    display: none;
+}
+.widget-quickselect-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.widget-quickselect-filtermask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    display: none;
+}
+.widget-quickselect-item, .widget-quickselect-conditions {
+    position: absolute;
+    width: 11.4rem;
+    height: 100%;
+    right: -11.4rem;
+    top: 0;
+    padding: 1rem 0 0 1.1rem;
+    background-color: #fff;
+    color: #5b5b5b;
+    font-size: 0.7rem;
+    z-index: 10;
+    overflow: auto;
+}
+.widget-quickselect-item h3, .widget-quickselect-conditions h3 {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px #e5e5e5 solid;
+    text-align: center;
+}
+.widget-quickselect-item .widget-quickselect-close, .widget-quickselect-conditions .widget-quickselect-close {
+    position: absolute;
+    left: 1.1rem;
+    top: 0.95rem;
+    padding: 0;
+    font-size: 1rem;
+    color: #b5b5b5;
+}
+.widget-quickselect-brand .widget-quickselect-close {
+    left: 0.3rem;
+}
+.widget-quickselect-item ul {
+    margin-top: 0.6rem;
+}
+.widget-quickselect-item li {
+    width: 9.1rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+}
+.widget-quickselect-item li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #e5e5e5;
+    color: #4d4d4d;
+}
+.widget-quickselect-item li .hover {
+    color: #fff;
+    background-color: #3595e7;
+}
+.widget-quickselect-brand {
+    padding-left: 0;
+    overflow: auto;
+}
+.widget-quickselect-brand dt {
+    height: 1rem;
+    line-height: 1rem;
+    padding-left: 0.4rem;
+    font-size: 0.55rem;
+    background-color: #eee;
+    color: #4d4d4d;
+}
+.widget-quickselect-brand dd {
+    color: #4d4d4d;
+    font-size: 0.6rem;
+    border-bottom: 1px #eee solid;
+}
+.widget-quickselect-brand .hover {
+    background: url(http://assets.diandong.com/mobile/images/app/mall/search/select.png) no-repeat 9.3rem center;
+    background-size: 0.5rem 0.5rem;
+}
+.widget-quickselect-brand dd img {
+    width: 1.5rem;
+    margin-right: 0.8rem;
+}
+.widget-quickselect-brand a {
+    display: block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.6rem;
+    color: #4d4d4d;
+}
+.widget-quickselect-index {
+    position: fixed;
+    width: 1.2rem;
+    right: 0.5rem;
+    top: initial;
+    bottom: 0.5rem;
+    padding: 0.4rem 0;
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 0.6rem;
+    z-index: 90;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.widget-quickselect-index a {
+    display: block;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    color: #fff;
+}
+.widget-quickselect-conditions {
+    padding-left: 0;
+}
+.widget-quickselect-conditions .widget-quickselect-close {
+    left: 0.5rem;
+}
+.widget-quickselect-reset {
+    position: absolute;
+    width: 2.4rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    right: 0.4rem;
+    top: 0.95rem;
+    text-align: center;
+    border: 1px #c0c0c0 solid;
+    color: #c0c0c0;
+    font-size: 0.6rem;
+    background-color: #fff;
+    outline: none;
+}
+.widget-quickselect-conditions-list {
+    font-size: 0.6rem;
+}
+.widget-quickselect-conditions-list li {
+    width: 100%;
+    height: 1.7rem;
+    line-height: 1.7rem;
+    padding: 0 0.6rem;
+    border-bottom: 1px #cdcdcd solid;
+}
+.widget-quickselect-conditions-list span {
+    display: inline-block;
+    vertical-align: middle;
+    color: #4d4d4d;
+}
+.widget-quickselect-conditions-list b {
+    float: right;
+    margin-right: 1rem;
+    color: #3595e7;
+    font-weight: normal;
+}
+.widget-quickselect-conditions-list i {
+    position: absolute;
+    color: #b9b9b9;
+    right: 0.6rem;
+    font-size: 0.8rem;
+    margin-top: -1px;
+}
+.widget-quickselect-hotbrand {
+    padding: 0.5rem 0 0;
+}
+.widget-quickselect-hotbrand-item {
+    width: 2.5rem;
+    height: 3rem;
+    margin-left: 0.2rem;
+    margin-bottom: 0.2rem;
+    float: left;
+    text-align: center;
+}
+.widget-quickselect-hotbrand-pic {
+    position: relative;
+    width: 1.4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.widget-quickselect-hotbrand .select {
+    display: none;
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    left: 0;
+    bottom: 0;
+    background: url(http://assets.diandong.com/mobile/images/app/mall/search/select.png) no-repeat;
+    background-size: cover;
+}
+.widget-quickselect-hotbrand .hover .select {
+    display: block;
+}
+.widget-quickselect-hotbrand-pic img {
+    width: 100%;
+}
+.widget-quickselect-hotbrand-item p {
+    font-size: 0.5rem;
+    color: #4d4d4d;
+    margin-top: 0.2rem;
+}
+.widget-quickselect-hotbrand-title {
+    height: 1rem;
+    line-height: 1rem;
+    padding-left: 0.4rem;
+    font-size: 0.55rem;
+    background-color: #eee;
+    color: #4d4d4d;
+}
+.widget-quickselect-search {
+    display: block;
+    width: 6.8rem;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    margin: 0.8rem auto 0;
+    color: #fff;
+    font-size: 0.6rem;
+    text-align: center;
+    background-color: #3595e7;
+    outline: none;
+}

@@ -3,11 +3,11 @@ var path = require('path');
 
 var config = {
     entry: {
-        filter: path.resolve(__dirname, 'source/components/filter/app.js')
+        service: path.resolve(__dirname, 'source/components/service/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/filter'),
+        path: path.resolve(__dirname, 'source/components/service'),
         filename: '[name].debug.js'
     },
 
@@ -37,12 +37,14 @@ var config = {
             '', '.js', '.json', '.scss'
         ],
         alias: {
+            zepto: path.resolve(__dirname, 'source/lib/zepto/zepto'),
             cookie: path.resolve(__dirname, 'source/lib/cookie/cookie'),
             user: path.resolve(__dirname, 'source/lib/user/user'),
             area: path.resolve(__dirname, 'source/lib/area/area'),
             tip: path.resolve(__dirname, 'source/lib/tip/tip'),
             swiper: path.resolve(__dirname, 'source/lib/swiper/idangerous.swiper.min'),
-            countdown: path.resolve(__dirname, 'source/lib/countdown/countdown')
+            countdown: path.resolve(__dirname, 'source/lib/countdown/countdown'),
+            quickselect: path.resolve(__dirname, 'source/lib/quickselect/quickselect')
         }
     }
 };
