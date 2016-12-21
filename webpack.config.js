@@ -3,12 +3,12 @@ var path = require('path');
 
 var config = {
     entry: {
-        appDownloadOverlay: path.resolve(__dirname, 'source/components/appDownloadOverlay/app.js')
+        filter: path.resolve(__dirname, 'source/components/filter/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/appDownloadOverlay'),
-        filename: '[name].js'
+        path: path.resolve(__dirname, 'source/components/filter'),
+        filename: '[name].debug.js'
     },
 
     module: {
@@ -37,7 +37,12 @@ var config = {
             '', '.js', '.json', '.scss'
         ],
         alias: {
-            cookie: path.resolve(__dirname, 'source/lib/cookie/cookie')
+            cookie: path.resolve(__dirname, 'source/lib/cookie/cookie'),
+            user: path.resolve(__dirname, 'source/lib/user/user'),
+            area: path.resolve(__dirname, 'source/lib/area/area'),
+            tip: path.resolve(__dirname, 'source/lib/tip/tip'),
+            swiper: path.resolve(__dirname, 'source/lib/swiper/idangerous.swiper.min'),
+            countdown: path.resolve(__dirname, 'source/lib/countdown/countdown')
         }
     }
 };

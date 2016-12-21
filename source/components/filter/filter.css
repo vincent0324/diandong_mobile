@@ -1,0 +1,56 @@
+.filter {
+    background-color: white;
+    padding-bottom: 0.5rem;
+}
+
+.filter-tab {
+    height: 1.5rem;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 0;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    display: flex;
+    padding: 0 0.9rem;
+    font-size: 0;
+    box-sizing: content-box;
+}
+
+.filter-tab a {
+    display: inline-block;
+    border-bottom: 3px solid white;
+    font-size: 0.55rem;
+    height: 1.5rem;
+    overflow: hidden;
+    line-height: 1.5rem;
+    color: #343d40;
+}
+
+.filter-tab a.current {
+    color: #00a0e9;
+    border-bottom-color: #00a0e9;
+}
+
+.filter-tab-content li {
+    float: left;
+    width: 3.2rem;
+    height: 2.7rem;
+    padding-top: 0.3rem;
+}
+
+.filter-tab-content li img {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 auto;
+}
+
+.filter-tab-content li em {
+    height: 0.8rem;
+    margin: 0.1rem auto 0;
+    font-style: normal;
+    line-height: 0.8rem;
+    text-align: center;
+    font-size: 0.5rem;
+    color: #344d40;
+    display: block;
+}
