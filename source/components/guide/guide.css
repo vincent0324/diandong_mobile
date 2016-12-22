@@ -393,3 +393,45 @@
     top: 0;
     left: 0;
 }
+
+.guide-model {
+    margin-top: 1.2rem;
+}
+
+.guide-model-content {
+    width: 15.45rem;
+    margin: 0.5rem 0 0 0.55rem;
+    overflow: auto;
+    height: 5.8rem;
+}
+
+.guide-model-list {
+    float: left;
+    width: 24.6rem;
+    height: 5.8rem;
+}
+
+.guide-model-item {
+    float: left;
+    width: 11.5rem;
+    height: 5.8rem;
+    margin-right: 0.8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.guide-model-item img {
+    width: 11.5rem;
+    height: 5.8rem;
+}
+
+.guide-model .guide-news-type {
+    width: 11.5rem;
+    height: 0.85rem;
+    background-image: url(http://i1.dd-img.com/assets/image/1482402091-39141ba600f7ab4b-460w-34h.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    bottom: 1.5rem;
+}
