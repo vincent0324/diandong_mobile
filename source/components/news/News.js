@@ -8,7 +8,16 @@ define(function(require, exports, module) {
 
     News.prototype = {
         init: function() {
-            console.log('news');
+            this.bindEvent();
+        },
+
+        bindEvent: function() {
+            $('.news-nav a').on('click', function() {
+                var index = $('.news-nav a').index(this);
+
+                $('.news-nav a').removeClass('current').eq(index).addClass('current');
+                $('.news-tab-content').addClass('fn-hide').eq(index).removeClass('fn-hide');
+            });
         }
     };
 
