@@ -8,10 +8,623 @@
     <meta name="format-detection" content="telephone=no, email=no">
     <meta name="applicable-device" content="mobile">
     <link rel="stylesheet" href="/m.diandong.com/source/css/common.css">
+    <link rel="stylesheet" href="/m.diandong.com/build/home.css">
     <script>!function(e){function t(i){if(n[i])return n[i].exports;var o=n[i]={exports:{},id:i,loaded:!1};return e[i].call(o.exports,o,o.exports,t),o.loaded=!0,o.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t){"use strict";!function(e){function t(){var t=a.getBoundingClientRect().width;t/n>540&&(t=540*n),e.rem=t/16,a.style.fontSize=e.rem+"px"}var n,i,o,r=window.document,a=r.documentElement,d=r.querySelector('meta[name="viewport"]');if(d){var s=d.getAttribute("content").match(/initial\-scale=(["']?)([\d\.]+)\1?/);s&&(i=parseFloat(s[2]),n=parseInt(1/i))}else d=r.createElement("meta"),d.setAttribute("name","viewport"),d.setAttribute("content","width=device-width, initial-scale=1, user-scalable=no, minimal-ui"),a.firstElementChild.appendChild(d);e.addEventListener("resize",function(){clearTimeout(o),o=setTimeout(t,300)},!1),e.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(o),o=setTimeout(t,300))},!1),"complete"===r.readyState?r.body.style.fontSize=12*n+"px":r.addEventListener("DOMContentLoaded",function(){r.body.style.fontSize=12*n+"px"},!1),t()}(window)}]);</script>
 </head>
 
 <body>
+
+    <div id="header-holder"></div>
+
+    <div id="application">
+
+        <div id="filter-holder" class="filter-holder">
+            <div id="filter" class="filter">
+                <div class="wrap">
+                    <nav class="filter-tab">
+                        <a href="javascript:;" class="filter-tab-button current">按品牌</a>
+                        <a href="javascript:;" class="filter-tab-button">按价格</a>
+                        <a href="javascript:;" class="filter-tab-button">按续航</a>
+                        <a href="javascript:;" class="J-quickselect-more">更多条件</a>
+                    </nav>
+                    <div class="filter-tabcon">
+                        <div class="filter-tab-content">
+                            <ul class="clearfix">
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>比亚迪</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>北汽新能源</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>吉利</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>长安</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>宝马</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>江淮</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>奇瑞</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>腾势</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="">
+                                        <em>特斯拉</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span><i></i><i></i><i></i></span>
+                                        <em>更多</em>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="filter-tab-content fn-hide"></div>
+                        <div class="filter-tab-content fn-hide"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="focus-holder" class="focus-holder">
+            <div id="focus" class="focus">
+                <div class="wrap">
+                    <div class="focus-container">
+                        <div class="focus-wrapper">
+                            <div class="focus-slide">
+                                <a href=""><img src="">
+                                    <!-- 640 * 340 -->
+                                </a>
+                            </div>
+                            <div class="focus-slide">
+                                <a href=""><img src=""></a>
+                            </div>
+                            <div class="focus-slide">
+                                <a href=""><img src=""></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="focus-pages"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="service-holder" class="service-holder"></div>
+
+
+        <div id="news-holder" class="news-holder">
+            <div id="news" class="news">
+                <div class="wrap">
+                    <header class="news-header">
+                        <h3>看</h3>
+                    </header>
+                    <nav class="news-nav">
+                        <a href="javascript:;" class="current">全部</a>
+                        <a href="javascript:;">新车</a>
+                        <a href="javascript:;">技术</a>
+                        <a href="javascript:;">行业</a>
+                        <a href="javascript:;">政策</a>
+                    </nav>
+                    <div class="news-content">
+                        <div class="news-tab-content">
+                            <div class="news-item" href="">
+                                <a href="">
+                                    <div class="news-item-pic fn-left">
+                                        <img src="">
+                                        <!-- 198 * 132 -->
+                                        <span class="news-type-tag">新车</span>
+                                    </div>
+                                    <div class="news-item-text fn-right">
+                                        <div class="news-item-title">宝马x5紧凑级SUV 助推混动版明年上市</div>
+                                        <div class="news-item-info">
+                                            <span class="news-item-time fn-left">2016/12/23 9:00</span>
+                                            <span class="news-item-tags fn-right">自动驾驶 | 特斯拉</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="news-item" href="">
+                                <a href="">
+                                    <div class="news-item-pic fn-left">
+                                        <img src="">
+                                        <!-- 198 * 132 -->
+                                        <span class="news-type-tag">新车</span>
+                                    </div>
+                                    <div class="news-item-text fn-right">
+                                        <div class="news-item-title">宝马x5紧凑级SUV 助推混动版明年上市</div>
+                                        <div class="news-item-info">
+                                            <span class="news-item-time fn-left">2016/12/23 9:00</span>
+                                            <span class="news-item-tags fn-right">自动驾驶 | 特斯拉</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="news-item-focus news-type-new">
+                                <a href="">
+                                    <img src="http://i2.dd-img.com/upload/2016/1216/1481866838465.jpg">
+                                    <!-- 588 * 308 -->
+                                    <div class="news-focus-cover">
+                                        <div class="news-focus-title">韩国双龙推Tivolis电动版 推行旗下车型</div>
+                                        <div class="news-focus-type"><i></i><em>新车</em></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="news-tab-content fn-hide"></div>
+                        <div class="news-tab-content fn-hide"></div>
+                        <div class="news-tab-content fn-hide"></div>
+                        <div class="news-tab-content fn-hide"></div>
+                    </div>
+                    <a href="" class="more-news-button">查看更多资讯</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="guide-holder" class="guide-holder">
+
+
+            <div id="guide" class="guide">
+                <div class="wrap">
+                    <header class="guide-header">
+                        <h3>选</h3>
+                    </header>
+                    <div class="guide-content">
+
+                        <div id="guide-tools" class="guide-tools">
+                            <a href="" class="guide-tool-count">
+                                <i></i>
+                                <em>购车计算</em>
+                            </a>
+                            <a href="" class="guide-tool-subsidy">
+                                <i></i>
+                                <em>补贴查询</em>
+                            </a>
+                            <a href="" class="guide-tool-pk">
+                                <i></i>
+                                <em>车型对比</em>
+                            </a>
+                            <a href="" class="guide-tool-price">
+                                <i></i>
+                                <em>免费询价</em>
+                            </a>
+                        </div>
+
+                        <!-- 热门品牌 -->
+                        <div id="guide-brand" class="guide-brand">
+                            <header class="guide-sub-header">
+                                <h4>热门品牌</h4>
+                            </header>
+                            <div class="guide-brand-list clearfix">
+                                <a href=""><img src="">
+                                    <!-- 96 * 96 -->
+                                </a>
+                                <a href=""><img src=""></a>
+                                <a href=""><img src=""></a>
+                                <a href=""><img src=""></a>
+                                <a href=""><img src=""></a>
+                                <a href=""><img src=""></a>
+                                <a href=""><img src=""></a>
+                                <a href=""><img src=""></a>
+                            </div>
+                        </div>
+
+                        <!-- 条件选车 -->
+                        <div id="guide-filter" class="guide-filter">
+                            <header class="guide-sub-header">
+                                <h4>条件选车</h4>
+                                <a href="" class="guide-more-button">more ></a>
+                            </header>
+                            <div class="filter-box">
+                                <nav class="filter-super-tab">
+                                    <a href="javascript:;" class="current">
+                                        <i class="icon">&#xe60c;</i>
+                                        <span>价格</span>
+                                    </a>
+                                    <a href="javascript:;">
+                                        <i class="icon">&#xe60c;</i>
+                                        <span>续航</span>
+                                    </a>
+                                    <a href="javascript:;">
+                                        <i class="icon">&#xe60c;</i>
+                                        <span>类型</span>
+                                    </a>
+                                </nav>
+
+                                <div class="filter-super-tabcon">
+                                    <nav class="filter-sub-tab">
+                                        <a href="javascript:;" class="current">10万以下</a>
+                                        <a href="javascript:;">10-20万</a>
+                                        <a href="javascript:;">20-30万</a>
+                                        <a href="javascript:;">30万以上</a>
+                                    </nav>
+
+                                    <div class="filter-sub-tabcon">
+                                        <div class="filter-model-list">
+                                            <a href="" class="filter-model-item">
+                                                <img src="">
+                                                <!-- 180 * 120 -->
+                                                <p class="filter-model-title">比亚迪 e6</p>
+                                                <p class="filter-model-price">￥12.89-23.3万</p>
+                                            </a>
+                                            <a href="" class="filter-model-item">
+                                                <img src="">
+                                                <p class="filter-model-title">比亚迪 e6</p>
+                                                <p class="filter-model-price">￥12.89-23.3万</p>
+                                            </a>
+                                            <a href="" class="filter-model-item">
+                                                <img src="">
+                                                <p class="filter-model-title">比亚迪 e6</p>
+                                                <p class="filter-model-price">￥12.89-23.3万</p>
+                                            </a>
+                                            <a href="" class="filter-model-item">
+                                                <img src="">
+                                                <p class="filter-model-title">比亚迪 e6</p>
+                                                <p class="filter-model-price">￥12.89-23.3万</p>
+                                            </a>
+                                            <a href="" class="filter-model-item">
+                                                <img src="">
+                                                <p class="filter-model-title">比亚迪 e6</p>
+                                                <p class="filter-model-price">￥12.89-23.3万</p>
+                                            </a>
+                                            <a href="" class="filter-model-item">
+                                                <img src="">
+                                                <p class="filter-model-title">比亚迪 e6</p>
+                                                <p class="filter-model-price">￥12.89-23.3万</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter-super-tabcon fn-hide"></div>
+                                <div class="filter-super-tabcon fn-hide"></div>
+                            </div>
+                        </div>
+
+                        <!-- 车型评测 -->
+                        <div id="guide-test" class="guide-test">
+                            <header class="guide-sub-header">
+                                <h4>车型评测</h4>
+                                <a href="" class="guide-more-button">more ></a>
+                            </header>
+                            <div class="guide-test-content">
+                                <div class="guide-news-photo">
+                                    <a href="">
+                                        <img src="http://i2.dd-img.com/upload/2016/1221/1482332237971.jpg">
+                                        <!-- 588 * 284 -->
+                                        <div class="guide-news-cover">
+                                            <div class="guide-news-title">韩国双龙推Tivolis电动版 推行旗</div>
+                                            <div class="guide-news-type"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="guide-news-list">
+                                    <ul>
+                                        <li>
+                                            <a href="" class="guide-news-ico">单车评测</a>
+                                            <a href="" class="guide-news-text">韩国双龙推Tivolis电动版 推行旗下车型电动化</a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="guide-news-ico">单车评测</a>
+                                            <a href="" class="guide-news-text">韩国双龙推Tivolis电动版 推行旗下车型电动化</a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="guide-news-ico">单车评测</a>
+                                            <a href="" class="guide-news-text">韩国双龙推Tivolis电动版 推行旗下车型电动化</a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="guide-news-ico">单车评测</a>
+                                            <a href="" class="guide-news-text">韩国双龙推Tivolis电动版 推行旗下车型电动化</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 视频评测 -->
+                        <div id="guide-video" class="guide-video">
+                            <header class="guide-sub-header">
+                                <h4>视频评测</h4>
+                                <a href="" class="guide-more-button">more ></a>
+                            </header>
+                            <div class="guide-video-content">
+                                <div class="guide-video-list">
+                                    <a href="" class="guide-video-item">
+                                        <img src="http://i2.dd-img.com/upload/2016/0902/1472786215336.jpg">
+                                        <div class="guide-news-title">韩国双龙推Tivolis电动版 推行旗</div>
+                                        <div class="guide-news-type"></div>
+                                    </a>
+                                    <a href="" class="guide-video-item">
+                                        <img src="">
+                                        <div class="guide-news-title">韩国双龙推Tivolis电动版 推行旗</div>
+                                        <div class="guide-news-type"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 车型导购 -->
+                        <div id="guide-model" class="guide-model">
+                            <header class="guide-sub-header">
+                                <h4>车型导购</h4>
+                                <a href="" class="guide-more-button">more ></a>
+                            </header>
+                            <div class="guide-model-content">
+                                <div class="guide-model-list">
+                                    <a href="" class="guide-model-item">
+                                        <img src="">
+                                        <!-- 460 * 232 -->
+                                        <div class="guide-news-title">韩国双龙推Tivolis电动版 推行旗</div>
+                                        <div class="guide-news-type"></div>
+                                    </a>
+                                    <a href="" class="guide-model-item">
+                                        <img src="">
+                                        <div class="guide-news-title">韩国双龙推Tivolis电动版 推行旗</div>
+                                        <div class="guide-news-type"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="mall-holder" class="mall-holder">
+            <div id="mall" class="mall">
+                <div class="wrap">
+                    <header class="mall-header">
+                        <h3>买</h3>
+                    </header>
+
+                    <div class="mall-content">
+
+                        <!-- 滚动订单 -->
+                        <div class="mall-order">
+                            <div class="mall-container">
+                                <div class="mall-wrapper">
+                                    <div class="mall-slide">
+                                        <div class="mall-order-item">
+                                            <i class="icon">&#xe63f;</i>
+                                            <em>某莫某成功预订 腾势时尚型</em>
+                                        </div>
+                                    </div>
+                                    <div class="mall-slide">
+                                        <div class="mall-order-item">
+                                            <i class="icon">&#xe63f;</i>
+                                            <em>某莫某成功预订 腾势时尚型</em>
+                                        </div>
+                                    </div>
+                                    <div class="mall-slide">
+                                        <div class="mall-order-item">
+                                            <i class="icon">&#xe63f;</i>
+                                            <em>某莫某成功预订 腾势时尚型</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 轮播大图 -->
+                        <div class="event-swiper">
+                            <div class="event-container">
+                                <div class="event-wrapper">
+                                    <div class="event-slide">
+                                        <div class="event-item">
+                                            <a href=""><img src=""></a>
+                                            <div class="event-item-countdown" data-endtime="1483181999000">距结束<span></span>天<span></span>时<span></span>分<span></span>秒</div>
+                                        </div>
+                                    </div>
+                                    <div class="event-slide"></div>
+                                    <div class="event-slide"></div>
+                                </div>
+                            </div>
+                            <div class="event-pages"></div>
+                        </div>
+
+
+                        <!-- -->
+                        <div class="mall-list clearfix">
+
+                            <a class="mall-item mall-item-special" href="">
+                                <header class="mall-item-header"><i>特惠</i></header>
+                                <div class="mall-item-countdown" data-endtime="">距结束<span></span>天<span></span>时<span></span>分<span></span>秒</div>
+                                <div class="mall-item-pic"><img src=""></div>
+                                <div class="mall-item-info">
+                                    <span>比亚迪e6</span>
+                                    <span class="mall-item-price">￥23.23万</span>
+                                </div>
+                                <div class="mall-item-intro">综合优惠22222元，支持零首付购车，送三年保险</div>
+                            </a>
+
+                            <a class="mall-item mall-item-group" href="">
+                                <header class="mall-item-header"><i>团购</i></header>
+                                <div class="mall-item-countdown" data-endtime="">距结束<span></span>天<span></span>时<span></span>分<span></span>秒</div>
+                                <div class="mall-item-pic"><img src=""></div>
+                                <div class="mall-item-info">
+                                    <span>比亚迪e6</span>
+                                    <span class="mall-item-price">￥23.23万</span>
+                                </div>
+                                <div class="mall-item-intro">综合优惠22222元，支持零首付购车，送三年保险</div>
+                            </a>
+
+                            <a class="mall-item mall-item-special" href="">
+                                <header class="mall-item-header"><i>特惠</i></header>
+                                <div class="mall-item-countdown" data-endtime="">距结束<span></span>天<span></span>时<span></span>分<span></span>秒</div>
+                                <div class="mall-item-pic"><img src=""></div>
+                                <div class="mall-item-info">
+                                    <span>比亚迪e6</span>
+                                    <span class="mall-item-price">￥23.23万</span>
+                                </div>
+                                <div class="mall-item-intro">综合优惠22222元，支持零首付购车，送三年保险</div>
+                            </a>
+
+                            <a class="mall-item mall-item-group" href="">
+                                <header class="mall-item-header"><i>团购</i></header>
+                                <div class="mall-item-countdown" data-endtime="">距结束<span></span>天<span></span>时<span></span>分<span></span>秒</div>
+                                <div class="mall-item-pic"><img src=""></div>
+                                <div class="mall-item-info">
+                                    <span>比亚迪e6</span>
+                                    <span class="mall-item-price">￥23.23万</span>
+                                </div>
+                                <div class="mall-item-intro">综合优惠22222元，支持零首付购车，送三年保险</div>
+                            </a>
+                        </div>
+
+                        <!-- 本地新闻 -->
+                        <div class="mall-local">
+                            <header class="mall-local-header">
+                                <h4><span>北京</span>新能源购车</h4>
+                                <div id="mall-local-city" class="mall-local-city"></div>
+                            </header>
+                            <div class="mall-local-content">
+                                <div class="mall-local-item mall-local-beijing fn-hide">
+                                    <div class="local-item-pic">
+                                        <a href="">
+                                            <img src="">
+                                            <p>那些系能源汽车过得如何？</p>
+                                        </a>
+                                    </div>
+                                    <div class="local-item-news">
+                                        <ul>
+                                            <li>
+                                                <span>团购</span>
+                                                <a href="">将渠道刘希成为旗舰机跑车</a>
+                                            </li>
+                                            <li>
+                                                <span>推荐</span>
+                                                <a href="">将渠道刘希成为旗舰机跑车将渠道刘希成为旗舰机跑车</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mall-local-item mall-local-guangzhou fn-hide"></div>
+                                <div class="mall-local-item mall-local-shenzhen fn-hide"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="social-holder" class="social-holder">
+            <div id="social" class="social">
+                <div class="wrap">
+                    <header class="social-header">
+                        <h3>用</h3>
+                    </header>
+
+                    <div class="social-content">
+
+                        <div class="social-list-holder">
+                            <div class="social-list">
+                                <a href="" class="social-item">
+                                    <img src="">
+                                    <p>宝马x5紧凑级SUV 助推混动办明年上市</p>
+                                </a>
+                                <a href="" class="social-item">
+                                    <img src="">
+                                    <p>宝马x5紧凑级SUV 助推混动办明年上市</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 邦友活动 -->
+                        <div class="social-friend">
+                            <header class="social-sub-header">
+                                <h4>邦友活动</h4>
+                            </header>
+
+                            <div class="friend-list-holder">
+                                <div class="friend-list">
+                                    <div class="friend-item">
+                                        <a href="" class="friend-item-pic"><img src="">
+                                            <!-- 456 * 232 -->
+                                        </a>
+                                        <a href="" class="friend-item-logo"><img src="">
+                                            <!-- 108 * 108 -->
+                                        </a>
+                                    </div>
+                                    <div class="friend-item">
+                                        <a href="" class="friend-item-pic"><img src=""></a>
+                                        <a href="" class="friend-item-logo"><img src=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 热论推荐 -->
+                        <div class="social-bbs">
+                            <header class="social-sub-header">
+                                <h4>热论推荐</h4>
+                            </header>
+                            <div class="social-bbs-content">
+                                <div class="bbs-list clearfix">
+                                    <a href="">腾势论坛</a>
+                                    <a href="">腾势论坛</a>
+                                    <a href="">腾势论坛</a>
+                                    <a href="">腾势论坛</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="feature-holder" class="feature-holder"></div>
+
+    </div>
+
+
+    <footer id="footer" class="footer"></footer>
+
+    <script src="/m.diandong.com/build/vendor.bundle.js"></script>
+    <script src="/m.diandong.com/build/home.js"></script>
 
 </body>
 

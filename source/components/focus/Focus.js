@@ -3,6 +3,8 @@ define(function(require, exports, module) {
     var $ = require('zepto');
     var Swiper = require('swiper');
 
+    require('./focus.css');
+
     var Focus = function() {
         this.init();
     };

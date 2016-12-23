@@ -1,3 +1,7 @@
+.focus {
+    background-color: white;
+}
+
 .focus .wrap {
     position: relative;
 }

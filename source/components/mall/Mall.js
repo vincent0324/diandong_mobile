@@ -5,6 +5,8 @@ define(function(require, exports, module) {
     var Countdown = require('countdown');
     var Area = require('area');
 
+    require('./mall.css');
+
     var Mall = function() {
         this.init();
     };

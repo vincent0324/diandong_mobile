@@ -1,14 +1,18 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
     entry: {
-        social: path.resolve(__dirname, 'source/components/social/app.js')
+        vendor: [
+            'react', 'react-dom'
+        ],
+        home: path.resolve(__dirname, 'source/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/social'),
-        filename: '[name].debug.js'
+        path: path.resolve(__dirname, 'build'),
+        filename: '[name].js'
     },
 
     module: {
@@ -22,15 +26,40 @@ var config = {
                 }
             }, {
                 test: /\.css$/,
-                loader: 'style!css'
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+            }, {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
             }, {
                 test: /\.(png|woff|svg|ttf|eot)$/,
-                loader: 'url-loader?limit=10000' // 限制大小小于10k的
+                loader: 'url-loader?limit=10000'
             }
         ]
     },
 
-    plugins: [],
+    plugins: [
+        new ExtractTextPlugin('[name].css'),
+
+        // 不变
+        new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'}),
+
+        // 压缩代码
+        new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false
+            },
+            compress: {
+                warnings: false
+            }
+        }),
+
+        // 设置成生产环境
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        })
+    ],
 
     resolve: {
         extensions: [

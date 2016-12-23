@@ -1,0 +1,158 @@
+.social {
+    padding: 0.5rem 0;
+    background-color: white;
+}
+
+.social-header {
+    width: 16rem;
+    height: 1.5rem;
+    background-image: url(http://i1.dd-img.com/assets/image/1482377758-4b8540a41f443a72-640w-60h.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.social-header h3 {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    margin: 0 auto;
+    line-height: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #272f33;
+}
+
+.social-item {
+    width: 9.6rem;
+    height: 8.9rem;
+    float: left;
+    margin-right: 0.8rem;
+}
+
+.social-list-holder {
+    width: 15.45rem;
+    height: 8.9rem;
+    margin: 0.5rem 0 0 0.55rem;
+    overflow: auto;
+}
+
+.social-list {
+    width: 20.8rem;
+    height: 8.9rem;
+    float: left;
+}
+
+.social-item img {
+    width: 9.6rem;
+    height: 6.4rem;
+    display: block;
+}
+
+.social-item p {
+    height: 2.2rem;
+    line-height: 1.1rem;
+    margin-top: 0.3rem;
+    font-size: 0.6rem;
+    color: #343d40;
+}
+
+.social-sub-header {
+    height: 1rem;
+    line-height: 1rem;
+    padding: 0 0.8rem;
+    font-size: 0;
+}
+
+.social-sub-header h4 {
+    font-size: 0.7rem;
+    color: #272f33;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.social-sub-header::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.35rem;
+    background-color: #ae5da1;
+    transform: rotate(45deg);
+}
+
+.social-friend {
+    margin-top: 1.5rem;
+}
+
+.friend-list-holder {
+    width: 15.45rem;
+    height: 7.15rem;
+    margin: 0.5rem 0 0 0.55rem;
+    overflow: auto;
+}
+
+.friend-list {
+    width: 24.4rem;
+    height: 7.15rem;
+    float: left;
+}
+
+.friend-item {
+    width: 11.4rem;
+    height: 7.15rem;
+    position: relative;
+    float: left;
+    margin-right: 0.8rem;
+}
+
+.friend-item-pic {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 11.4rem;
+    height: 5.8rem;
+}
+
+.friend-item-pic img {
+    width: 11.4rem;
+    height: 5.8rem;
+}
+
+.friend-item-logo {
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 4.35rem;
+    overflow: hidden;
+}
+
+.friend-item-logo img {
+    width: 2.7rem;
+    height: 2.7rem;
+}
+
+.bbs-list {
+    width: 14.7rem;
+    margin: 0 auto;
+    padding-top: 0.6rem;
+}
+
+.bbs-list a {
+    float: left;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    padding: 0 0.6rem;
+    font-size: 0.6rem;
+    color: #343d40;
+    margin: 0 0.6rem 0.6rem 0;
+    background-color: #f1f1f1;
+    border-radius: 1.3rem;
+}
+
+.social-bbs {
+    margin-top: 1.6rem;
+}

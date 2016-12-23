@@ -2,6 +2,8 @@ define(function(require, exports, module) {
 
     var $ = require('jquery');
 
+    require('./guide.css');
+
     var Guide = function() {
         this.init();
     };
