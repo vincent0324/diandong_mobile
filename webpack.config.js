@@ -3,11 +3,11 @@ var path = require('path');
 
 var config = {
     entry: {
-        social: path.resolve(__dirname, 'source/components/social/app.js')
+        footer: path.resolve(__dirname, 'source/components/footer/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/social'),
+        path: path.resolve(__dirname, 'source/components/footer'),
         filename: '[name].debug.js'
     },
 

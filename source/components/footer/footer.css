@@ -1,0 +1,119 @@
+.feature-holder {
+    background-color: white;
+    border-top: 1px solid #d5d5d5;
+}
+
+.feature-holder .wrap {
+    box-sizing: content-box;
+    padding: 0.4rem 0;
+    font-size: 0;
+}
+
+.feature-item {
+    width: 4rem;
+    height: 0.8rem;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-size: 0;
+    border-right: 1px solid #c9c9c9;
+    overflow: hidden;
+}
+
+.feature-item:last-child {
+    border-right-width: 0;
+}
+
+.feature-item i {
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    vertical-align: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 0.1rem;
+}
+
+.feature-item-base i {
+    background-image: url(http://i1.dd-img.com/assets/image/1482519948-cee7106ffd677959-36w-36h.png);
+}
+
+.feature-item-new i {
+    background-image: url(http://i1.dd-img.com/assets/image/1482519948-dc6f0b72a7e55ab4-36w-36h.png);
+}
+
+.feature-item-test i {
+    background-image: url(http://i1.dd-img.com/assets/image/1482519948-4b2b6551cfda187a-36w-36h.png);
+}
+
+.feature-item-manager i {
+    background-image: url(http://i1.dd-img.com/assets/image/1482519948-72a3abe504223ae1-36w-36h.png);
+}
+
+.feature-item span {
+    display: inline-block;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.5rem;
+    color: #282c30;
+}
+
+.footer-hotline-holder {
+    background-color: #697a89;
+}
+
+.footer-hotline-holder .wrap {
+    height: 1.8rem;
+}
+
+.footer-hotline-text {
+    padding: 0.2rem 0 0 0.6rem;
+}
+
+.hotline-detail {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: white;
+    font-size: 0.65rem;
+}
+
+.hotline-time {
+    height: 0.7rem;
+    line-height: 0.7rem;
+    font-size: 0.45rem;
+    color: #cedbe7;
+}
+
+.footer-hotline-btn {
+    width: 4rem;
+    height: 1.8rem;
+    background-color: #36a02e;
+    color: white;
+    line-height: 1.7rem;
+    text-align: center;
+}
+
+.footer-hotline-btn i {
+    font-size: 1.3rem;
+}
+
+.footer-text-holder {
+    background-color: #2f3942;
+}
+
+.footer-text-holder .wrap {
+    height: 1.8rem;
+    line-height: 1.8rem;
+    font-size: 0.55rem;
+    color: #b1b8bf;
+    padding-left: 0.6rem;
+}
+
+.footer-text-list a {
+    color: #b1b8bf;
+}
+
+.footer-text-list i {
+    font-style: normal;
+    margin: 0 0.1rem;
+}
