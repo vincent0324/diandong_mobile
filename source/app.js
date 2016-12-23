@@ -31,3 +31,8 @@ var mall = new Mall();
 // social
 var Social = require('./components/social/Social');
 var social = new Social();
+
+// footer
+var Footer = require('./components/footer/Footer.react');
+
+ReactDOM.render(<Footer/>, document.getElementById('footer-holder'));

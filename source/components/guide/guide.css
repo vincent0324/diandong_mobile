@@ -235,6 +235,7 @@
     float: left;
     height: 5rem;
     width: 36rem;
+    overflow: hidden;
 }
 
 .filter-model-item {
@@ -359,6 +360,7 @@
     float: left;
     width: 24.6rem;
     height: 5.8rem;
+    overflow: hidden;
 }
 
 .guide-video-item {
@@ -409,6 +411,7 @@
     float: left;
     width: 24.6rem;
     height: 5.8rem;
+    overflow: hidden;
 }
 
 .guide-model-item {

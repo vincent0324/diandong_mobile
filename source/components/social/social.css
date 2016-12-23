@@ -41,6 +41,7 @@
     width: 20.8rem;
     height: 8.9rem;
     float: left;
+    overflow: hidden;
 }
 
 .social-item img {
@@ -97,6 +98,7 @@
     width: 24.4rem;
     height: 7.15rem;
     float: left;
+    overflow: hidden;
 }
 
 .friend-item {
