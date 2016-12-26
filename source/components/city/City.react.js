@@ -38,9 +38,9 @@ var City = React.createClass({
         }
     },
 
-    componentWillUnmount: function() {
-        this.getCurrentCityRequest.abort();
-    },
+    // componentWillUnmount: function() {
+    //     this.getCurrentCityRequest.abort();
+    // },
 
     render: function() {
 

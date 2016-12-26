@@ -1,7 +1,8 @@
 var React = require('react');
-var City = require('./City.react');
+var City = require('../city/City.react');
 var Search = require('./Search.react');
 var Nav = require('./Nav.react');
+var UserPanel = require('./UserPanel.react');
 
 var Overlay = React.createClass({
 
@@ -25,7 +26,9 @@ var Overlay = React.createClass({
                         </div>
 
                         <div className="header-user-holder">
-                            <div id="user-holder"></div>
+                            <div id="user-holder">
+                                <UserPanel/>
+                            </div>
                         </div>
                     </div>
                 </div>

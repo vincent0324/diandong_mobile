@@ -21471,6 +21471,8 @@
 	var OverlayButton = __webpack_require__(179);
 	var Overlay = __webpack_require__(180);
 
+	__webpack_require__(192);
+
 	var Header = React.createClass({
 	    displayName: 'Header',
 
@@ -21575,8 +21577,9 @@
 
 	var React = __webpack_require__(1);
 	var City = __webpack_require__(181);
-	var Search = __webpack_require__(182);
-	var Nav = __webpack_require__(184);
+	var Search = __webpack_require__(188);
+	var Nav = __webpack_require__(189);
+	var UserPanel = __webpack_require__(190);
 
 	var Overlay = React.createClass({
 	    displayName: 'Overlay',
@@ -21609,7 +21612,11 @@
 	                    React.createElement(
 	                        'div',
 	                        { className: 'header-user-holder' },
-	                        React.createElement('div', { id: 'user-holder' })
+	                        React.createElement(
+	                            'div',
+	                            { id: 'user-holder' },
+	                            React.createElement(UserPanel, null)
+	                        )
 	                    )
 	                )
 	            );
@@ -21625,27 +21632,68 @@
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
+	var $ = __webpack_require__(182);
+	var Cookie = __webpack_require__(183);
+
+	__webpack_require__(184);
 
 	var City = React.createClass({
-	    displayName: "City",
+	    displayName: 'City',
 
+
+	    getInitialState: function getInitialState() {
+	        return { currentCity: '北京' };
+	    },
+
+	    getCurrentCityFromCookie: function getCurrentCityFromCookie() {
+
+	        if (!!Cookie.get('cityName')) {
+	            return true;
+	        }
+
+	        return false;
+	    },
+
+	    componentDidMount: function componentDidMount() {
+
+	        if (this.getCurrentCityFromCookie()) {
+	            this.setState({ currentCity: Cookie.get('cityName') });
+	        } else {
+	            this.getCurrentCityRequest = $.ajax({
+	                url: 'http://car.diandong.com/api/get_local',
+	                data: {},
+	                dataType: 'jsonp',
+	                type: 'POST',
+	                success: function (result) {
+	                    this.setState({ currentCity: result.data.city });
+	                    Cookie.set('cityName', result.data.city);
+	                    Cookie.set('cityId', result.data.code);
+	                }.bind(this)
+	            });
+	        }
+	    },
+
+	    // componentWillUnmount: function() {
+	    //     this.getCurrentCityRequest.abort();
+	    // },
 
 	    render: function render() {
+
 	        return React.createElement(
-	            "div",
-	            { className: "current-city" },
+	            'div',
+	            { className: 'current-city' },
 	            React.createElement(
-	                "i",
-	                { className: "icon" },
-	                "\uE659"
+	                'i',
+	                { className: 'icon' },
+	                '\uE659'
 	            ),
 	            React.createElement(
-	                "a",
-	                { href: "http://www.diandong.com/city/" },
-	                "\u5317\u4EAC"
+	                'a',
+	                { href: 'http://www.diandong.com/city/' },
+	                this.state.currentCity
 	            )
 	        );
 	    }
@@ -21655,79 +21703,6 @@
 
 /***/ },
 /* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var $ = __webpack_require__(183);
-
-	var Search = React.createClass({
-	    displayName: 'Search',
-
-
-	    getInitialState: function getInitialState() {
-	        return { searchPlaceholderValue: null, keywords: '' };
-	    },
-
-	    handleKeywordChange: function handleKeywordChange(event) {
-	        var currentInputValue = event.target.value;
-
-	        this.setState({ keywords: currentInputValue });
-	    },
-
-	    handleSubmit: function handleSubmit() {
-	        var searchKeywords;
-
-	        searchKeywords = this.state.keywords ? this.state.keywords : this.state.searchPlaceholderValue;
-
-	        document.location.href = 'http://search.diandong.com/zonghe/?words=' + searchKeywords;
-	    },
-
-	    componentWillMount: function componentWillMount() {
-	        this.getSearchPlaceholderRequest = $.ajax({
-	            url: 'http://car.diandong.com/api/getSectionData?sectionid=296',
-	            data: {},
-	            dataType: 'jsonp',
-	            type: 'POST',
-	            success: function (result) {
-	                var searchPlaceholderValue = result.data[0].title || '';
-
-	                this.setState({ searchPlaceholderValue: searchPlaceholderValue });
-	            }.bind(this)
-	        });
-	    },
-
-	    componentWillUnmount: function componentWillUnmount() {
-	        this.getSearchPlaceholderRequest.abort();
-	    },
-
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            { className: 'search-wrapper', id: 'search-wrapper' },
-	            React.createElement(
-	                'div',
-	                { className: 'search-bar' },
-	                React.createElement('input', { className: 'search-input', type: 'text', value: this.state.keywords, onChange: this.handleKeywordChange, placeholder: this.state.searchPlaceholderValue }),
-	                React.createElement(
-	                    'a',
-	                    { className: 'search-submit-btn', href: 'javascript:;', onClick: this.handleSubmit },
-	                    React.createElement(
-	                        'i',
-	                        { className: 'icon' },
-	                        '\uE60A'
-	                    )
-	                )
-	            )
-	        );
-	    }
-	});
-
-	module.exports = Search;
-
-/***/ },
-/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -24081,7 +24056,545 @@
 	}
 
 /***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+
+	// https://github.com/2046/cookie
+
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+
+	    'use strict';
+
+	    var decode, encode;
+
+	    decode = decodeURIComponent;
+	    encode = encodeURIComponent;
+
+	    exports.get = function (key, opt) {
+	        opt = opt || {};
+	        validateCookieName(key);
+	        return (opt.converter || same)(parseCookieString(document.cookie, !opt.raw)[key]);
+	    };
+
+	    exports.set = function (key, val, opt) {
+	        var expires, domain, path, text, date;
+
+	        validateCookieName(key);
+
+	        opt = opt || {};
+	        path = opt.path;
+	        expires = opt.expires;
+	        domain = opt.domain;
+
+	        if (!opt.raw) {
+	            val = encode(String(val));
+	        }
+
+	        date = expires;
+	        text = key + '=' + val;
+
+	        if (typeof date === 'number') {
+	            date = new Date();
+	            date.setDate(date.getDate() + expires);
+	        }
+
+	        if (date instanceof Date) {
+	            text += '; expires=' + date.toUTCString();
+	        }
+
+	        if (isNonEmptyString(domain)) {
+	            text += '; domain=' + domain;
+	        }
+
+	        if (isNonEmptyString(path)) {
+	            text += '; path=' + path;
+	        }
+
+	        if (opt.secure) {
+	            text += '; secure';
+	        }
+
+	        document.cookie = text;
+	        return text;
+	    };
+
+	    exports.remove = function (key, opt) {
+	        opt = opt || {};
+	        opt.expires = new Date(0);
+	        return this.set(key, '', opt);
+	    };
+
+	    function parseCookieString(text, shouldDecode) {
+	        var cookies, cookieKey, cookieVal, cookieKeyVal, decodeVal, cookieParts, index, len;
+
+	        cookies = {};
+	        decodeVal = shouldDecode ? decode : same;
+
+	        if (typeof text === 'string' && text.length > 0) {
+	            cookieParts = text.split(/;\s/g);
+
+	            for (index = 0, len = cookieParts.length; index < len; index++) {
+	                cookieKeyVal = cookieParts[index].match(/([^=]+)=/i);
+
+	                if (cookieKeyVal instanceof Array) {
+	                    try {
+	                        cookieKey = decode(cookieKeyVal[1]);
+	                        cookieVal = decodeVal(cookieParts[index].substring(cookieKeyVal[1].length + 1));
+	                    } catch (e) {}
+	                } else {
+	                    cookieVal = '';
+	                    cookieKey = decode(cookieParts[index]);
+	                }
+
+	                if (cookieKey) {
+	                    cookies[cookieKey] = cookieVal;
+	                }
+	            }
+	        }
+
+	        return cookies;
+	    };
+
+	    function same(str) {
+	        return str;
+	    };
+
+	    function isNonEmptyString(str) {
+	        return typeof str === 'string' && str !== '';
+	    };
+
+	    function validateCookieName(key) {
+	        if (!isNonEmptyString(key)) {
+	            throw new TypeError('Cookie name must be a non-empty string');
+	        }
+	    };
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
 /* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(185);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(187)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./city.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./city.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(186)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".current-city {\n    font-size: 14px;\n}\n\n.current-city i {\n    color: #9a9a9a;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 186 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var $ = __webpack_require__(182);
+
+	var Search = React.createClass({
+	    displayName: 'Search',
+
+
+	    getInitialState: function getInitialState() {
+	        return { searchPlaceholderValue: null, keywords: '' };
+	    },
+
+	    handleKeywordChange: function handleKeywordChange(event) {
+	        var currentInputValue = event.target.value;
+
+	        this.setState({ keywords: currentInputValue });
+	    },
+
+	    handleSubmit: function handleSubmit() {
+	        var searchKeywords;
+
+	        searchKeywords = this.state.keywords ? this.state.keywords : this.state.searchPlaceholderValue;
+
+	        document.location.href = 'http://search.diandong.com/zonghe/?words=' + searchKeywords;
+	    },
+
+	    componentWillMount: function componentWillMount() {
+	        this.getSearchPlaceholderRequest = $.ajax({
+	            url: 'http://car.diandong.com/api/getSectionData?sectionid=296',
+	            data: {},
+	            dataType: 'jsonp',
+	            type: 'POST',
+	            success: function (result) {
+	                var searchPlaceholderValue = result.data[0].title || '';
+
+	                this.setState({ searchPlaceholderValue: searchPlaceholderValue });
+	            }.bind(this)
+	        });
+	    },
+
+	    componentWillUnmount: function componentWillUnmount() {
+	        this.getSearchPlaceholderRequest.abort();
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            { className: 'search-wrapper', id: 'search-wrapper' },
+	            React.createElement(
+	                'div',
+	                { className: 'search-bar' },
+	                React.createElement('input', { className: 'search-input', type: 'text', value: this.state.keywords, onChange: this.handleKeywordChange, placeholder: this.state.searchPlaceholderValue }),
+	                React.createElement(
+	                    'a',
+	                    { className: 'search-submit-btn', href: 'javascript:;', onClick: this.handleSubmit },
+	                    React.createElement(
+	                        'i',
+	                        { className: 'icon' },
+	                        '\uE60A'
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Search;
+
+/***/ },
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24098,22 +24611,213 @@
 	            { id: "nav", className: "nav" },
 	            React.createElement(
 	                "div",
-	                { className: "nav-wrapper" },
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" }),
-	                React.createElement("a", { href: "" })
+	                { className: "nav-wrapper clearfix" },
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-home" },
+	                    "\u9996\u9875"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-news" },
+	                    "\u8D44\u8BAF"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-product" },
+	                    "\u8F66\u578B\u5E93"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-test" },
+	                    "\u8BC4\u6D4B"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-video" },
+	                    "\u89C6\u9891"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-mall" },
+	                    "\u5546\u57CE"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-shop" },
+	                    "\u4F53\u9A8C\u5E97"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-bbs" },
+	                    "\u793E\u533A"
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "", className: "nav-item-app" },
+	                    "APP\u4E0B\u8F7D"
+	                )
 	            )
 	        );
 	    }
 	});
 
 	module.exports = Nav;
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var User = __webpack_require__(191);
+	var user = new User();
+
+	var UserPanel = React.createClass({
+	    displayName: 'UserPanel',
+
+
+	    getInitialState: function getInitialState() {
+	        return { userId: null, userAvatar: null };
+	    },
+
+	    componentWillMount: function componentWillMount() {
+	        if (user.id !== '') {
+	            this.setState({ userId: user.id, userAvatar: user.avatar });
+	        }
+	    },
+
+	    render: function render() {
+
+	        if (this.state.userId) {
+
+	            return React.createElement(
+	                'div',
+	                { className: 'user-panel' },
+	                React.createElement('i', null),
+	                React.createElement(
+	                    'div',
+	                    { className: 'user-panel-avatar' },
+	                    React.createElement(
+	                        'a',
+	                        { href: 'http://passport.diandong.com/ark/baseinfo' },
+	                        React.createElement('img', { src: this.state.userAvatar })
+	                    )
+	                ),
+	                React.createElement('i', null)
+	            );
+	        }
+
+	        return React.createElement(
+	            'div',
+	            { className: 'user-panel' },
+	            React.createElement('i', null),
+	            React.createElement(
+	                'div',
+	                { className: 'user-login-btn' },
+	                React.createElement(
+	                    'a',
+	                    { href: 'http://passport.diandong.com/ark/login/' },
+	                    '\u767B\u5F55'
+	                )
+	            ),
+	            React.createElement('i', null)
+	        );
+	    }
+	});
+
+	module.exports = UserPanel;
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+
+	    'use strict';
+
+	    var Cookie = __webpack_require__(183);
+
+	    var User = function User() {
+	        this.init();
+	    };
+
+	    User.prototype = {
+
+	        id: '',
+
+	        name: '',
+
+	        nickname: '',
+
+	        avatar: '',
+
+	        init: function init() {
+	            this.getUserInfo();
+	        },
+
+	        getUserInfo: function getUserInfo() {
+	            var userName = Cookie.get('ark_rememberusername') || '';
+	            var userAvatar = Cookie.get('ark_headimg') || '';
+	            var nickname = Cookie.get('ark_nickname') || '';
+	            var userId = Cookie.get('ark_userid') || '';
+
+	            this.setUserInfo(userId, userName, nickname, userAvatar);
+	        },
+
+	        setUserInfo: function setUserInfo(id, name, nickname, avatar) {
+	            this.id = id;
+	            this.name = name;
+	            this.nickname = nickname;
+	            this.avatar = avatar;
+	        }
+	    };
+
+	    module.exports = User;
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(193);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(187)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./header.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./header.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(186)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".header.header-fixed {\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: -5rem;\n    left: 0;\n    z-index: 1000;\n    overflow: hidden;\n}\n\n.header {\n    background-color: white;\n    position: relative;\n}\n\n.header-content .wrap {\n    padding: 0.5rem 0.5rem 0.5rem;\n    height: 2.1rem;\n}\n\n.logo {\n    width: 3.2rem;\n    height: 1.1rem;\n}\n\n.logo a {\n    height: 0;\n    font-size: 0;\n    padding-top: 1.1rem;\n    overflow: hidden;\n    display: block;\n    background-image: url(http://i1.dd-img.com/assets/image/1482305029-9c27e5b5c0791c16-128w-44h.png);\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n\n.slogan {\n    width: 4.6rem;\n    height: 1.1rem;\n    margin-left: 0.5rem;\n}\n\n.slogan em {\n    display: block;\n    height: 0;\n    font-size: 0;\n    overflow: hidden;\n    padding-top: 1.1rem;\n    background-image: url(http://i1.dd-img.com/assets/image/1482305208-ceb991dce17835bb-184w-44h.png);\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n\n.header-overlay {\n    background-color: white;\n    border-top: 1px solid #eee;\n}\n\n.header-overlay-btn {\n    width: 1.1rem;\n    height: 1.1rem;\n    line-height: 1.1rem;\n    text-align: center;\n}\n\n.header-overlay-btn i {\n    font-size: 0.8rem;\n    color: #4f6773;\n}\n\n.header-overlay .wrap {\n    padding-top: 0.7rem;\n}\n\n.header-overlay-city {\n    height: 1rem;\n    line-height: 1rem;\n    color: #bababa;\n    text-align: center;\n}\n\n.header-search-holder {\n    margin-top: 1rem;\n}\n\n.header-overlay-city a {\n    color: #00a0e9;\n    font-size: 0.55rem;\n}\n\n.header-overlay-city i {\n    font-size: 0.6rem;\n    display: inline-block;\n    margin-right: 0.1rem;\n}\n\n.header-search-holder {\n    width: 13.9rem;\n    height: 1.6rem;\n    margin: 0.9rem auto 0;\n    background-color: #f2f2f2;\n    border: 1px solid #d8d8d8;\n    border-radius: 1.6rem;\n    position: relative;\n    box-sizing: content-box;\n    overflow: hidden;\n}\n\n.search-bar {\n    position: relative;\n    width: 13.9rem;\n    height: 1.6rem;\n}\n\n.search-submit-btn {\n    position: absolute;\n    width: 1.5rem;\n    height: 1.5rem;\n    top: 0;\n    right: 0.3rem;\n    line-height: 1.5rem;\n    text-align: center;\n    color: #00a0e9;\n}\n\n.search-submit-btn i {\n    font-size: 1rem;\n}\n\n.search-input {\n    position: relative;\n    width: 12rem;\n    height: 1.6rem;\n    top: 0;\n    left: 0;\n    background-color: transparent;\n    border-width: 0;\n    padding-left: 0.8rem;\n    font-size: 0.6rem;\n}\n\n.header-nav-holder {\n    width: 13.8rem;\n    margin: 1.4rem auto 0;\n}\n\n.nav a {\n    float: left;\n    width: 4.5rem;\n    height: 2.8rem;\n    margin: 0 0.05rem 0.1rem;\n    text-align: center;\n    line-height: 2.8rem;\n    color: white;\n    font-size: 0.6rem;\n}\n\n.nav-item-home {\n    background-color: #00b8ec;\n}\n\n.nav-item-news {\n    background-color: #63b1a1;\n}\n\n.nav-item-product {\n    background-color: #7d83d6;\n}\n\n.nav-item-test {\n    background-color: #5671b3;\n}\n\n.nav-item-video {\n    background-color: #b56aad;\n}\n\n.nav-item-mall {\n    background-color: #c24c34;\n}\n\n.nav-item-shop {\n    background-color: #94bf41;\n}\n\n.nav-item-bbs {\n    background-color: #f38c1d;\n}\n\n.nav-item-app {\n    background-color: #edbe00;\n}\n\n.user-login-btn {\n    width: 2.8rem;\n    height: 2.8rem;\n    border-radius: 50%;\n    border: 1px solid #dbdbdb;\n    line-height: 2.8rem;\n    text-align: center;\n    font-size: 0.7rem;\n    display: inline-block;\n    vertical-align: top;\n    margin: 0 0.5rem;\n}\n\n.user-login-btn a {\n    color: #00a0e9;\n}\n\n.user-panel-avatar {\n    width: 2.8rem;\n    height: 2.8rem;\n    border-radius: 50%;\n    border: 1px solid #dbdbdb;\n    overflow: hidden;\n    display: inline-block;\n    vertical-align: top;\n    margin: 0 0.5rem;\n}\n\n.user-panel-avatar img {\n    width: 2.8rem;\n    height: 2.8rem;\n}\n\n.user-panel {\n    font-size: 0;\n    text-align: center;\n    margin-top: 2.2rem;\n}\n\n.user-panel i {\n    width: 5rem;\n    height: 1.4rem;\n    border-bottom: 1px solid #dbdbdb;\n    display: inline-block;\n    vertical-align: top;\n}\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);
