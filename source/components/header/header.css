@@ -98,6 +98,12 @@
     width: 13.9rem;
     height: 1.6rem;
     margin: 0.9rem auto 0;
+}
+
+.search-bar {
+    position: relative;
+    width: 13.9rem;
+    height: 1.6rem;
     background-color: #f2f2f2;
     border: 1px solid #d8d8d8;
     border-radius: 1.6rem;
@@ -106,10 +112,9 @@
     overflow: hidden;
 }
 
-.search-bar {
-    position: relative;
-    width: 13.9rem;
-    height: 1.6rem;
+.search-bar.focus {
+    border-color: #00a0e9;
+    background-color: white;
 }
 
 .search-submit-btn {

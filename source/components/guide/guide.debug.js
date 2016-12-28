@@ -59,6 +59,8 @@
 
 	    var $ = __webpack_require__(2);
 
+	    __webpack_require__(3);
+
 	    var Guide = function Guide() {
 	        this.init();
 	    };
@@ -71,7 +73,7 @@
 
 	        bindEvent: function bindEvent() {
 	            $('.filter-sub-tab a').on('click', function () {
-	                var index = $(this).parent('.filter-sub-tab').find('a').index(this);
+	                var index = $(this).parents('.filter-sub-tab').find('a').index(this);
 	                var tabContent = $(this).parents('.filter-sub-tab').siblings('.filter-sub-tabcon');
 
 	                $(this).addClass('current').siblings('a').removeClass('current');
@@ -10315,6 +10317,354 @@
 
 	return jQuery;
 	} );
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(4);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./guide.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./guide.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".guide {\n    background-color: white;\n    padding: 0.5rem 0;\n}\n\n.guide-header {\n    width: 16rem;\n    height: 1.5rem;\n    background-image: url(http://i1.dd-img.com/assets/image/1482377758-4b8540a41f443a72-640w-60h.png);\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n\n.guide-header h3 {\n    width: 1.5rem;\n    height: 1.5rem;\n    display: block;\n    margin: 0 auto;\n    line-height: 1.5rem;\n    text-align: center;\n    font-size: 1.2rem;\n    font-weight: bold;\n    color: #272f33;\n}\n\n.guide-content {\n    padding-top: 0.55rem;\n}\n\n.guide-tools {\n    font-size: 0;\n}\n\n.guide-tools a {\n    display: inline-block;\n    width: 4rem;\n    height: 2.6rem;\n}\n\n.guide-tools i {\n    display: block;\n    width: 1.2rem;\n    height: 1.2rem;\n    margin: 0 auto;\n    background-color: #7d83d6;\n    border-radius: 50%;\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n\n.guide-tools em {\n    display: block;\n    height: 1.4rem;\n    line-height: 1.4rem;\n    text-align: center;\n    font-style: normal;\n    font-size: 0.5rem;\n    color: #344d40;\n}\n\n.guide-tool-count i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482395279-f562e8b3b34db88c-48w-48h.png);\n    background-color: white;\n}\n\n.guide-tool-subsidy i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482395575-b0a438a78ae6c189-48w-48h.png);\n}\n\n.guide-tool-pk i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482395668-a334be2e3eaed499-48w-48h.png);\n}\n\n.guide-tool-price i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482395764-dc2cbbbc3f4c4d02-48w-48h.png);\n}\n\n.guide-sub-header {\n    height: 1rem;\n    line-height: 1rem;\n    padding: 0 0.8rem;\n    font-size: 0;\n}\n\n.guide-sub-header h4 {\n    font-size: 0.7rem;\n    color: #272f33;\n    display: inline-block;\n    vertical-align: middle;\n}\n\n.guide-sub-header::before {\n    content: \"\";\n    width: 8px;\n    height: 8px;\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 0.35rem;\n    background-color: #7d83d6;\n    transform: rotate(45deg);\n}\n\n.guide-brand {\n    margin-top: 0.6rem;\n}\n\n.guide-brand-list {\n    padding: 0.6rem 0.5rem 0;\n}\n\n.guide-brand-list a {\n    width: 2.4rem;\n    height: 2.4rem;\n    border: 1px solid #e8e8e8;\n    margin: 0 0.3rem 0.6rem;\n    overflow: hidden;\n    float: left;\n}\n\n.guide-brand-list a img {\n    width: 2.4rem;\n    height: 2.4rem;\n}\n\n.guide-filter {\n    margin-top: 0.4rem;\n}\n\n.guide-more-button {\n    float: right;\n    font-size: 0.5rem;\n    color: #7d83d6;\n}\n\n.filter-box {\n    margin-top: 0.6rem;\n}\n\n.filter-super-tab {\n    font-size: 0;\n    height: 1.3rem;\n    text-align: center;\n}\n\n.filter-super-tab a {\n    display: inline-block;\n    vertical-align: top;\n    height: 1.3rem;\n    margin: 0 0.05rem;\n    width: 4.9rem;\n    background-color: #dcdcdc;\n    position: relative;\n    overflow: hidden;\n    text-align: center;\n    line-height: 1.3rem;\n    font-size: 0.65rem;\n}\n\n.filter-super-tab a span {\n    width: 4.9rem;\n    height: 1.3rem;\n    line-height: 1.3rem;\n    text-align: center;\n    position: absolute;\n    top: 0;\n    left: 0;\n    font-size: 0.65rem;\n    color: #343d40;\n}\n\n.filter-super-tab a i {\n    display: none;\n}\n\n.filter-super-tab a.current {\n    background-color: #7d83d6;\n}\n\n.filter-super-tab a.current span {\n    color: white;\n}\n\n.filter-super-tab a.current i {\n    display: block;\n    color: white;\n    width: 0.9rem;\n    height: 0.9rem;\n    color: white;\n    position: absolute;\n    bottom: -0.45rem;\n    left: 2rem;\n    text-align: center;\n    line-height: 0.9rem;\n    font-size: 0.8rem;\n}\n\n.filter-super-tabcon {\n    padding-top: 0.1rem;\n}\n\n.filter-sub-tab {\n    height: 1.3rem;\n    width: 14.9rem;\n    margin: 0 auto;\n    background-color: #f2f2f2;\n    font-size: 0;\n    overflow: auto;\n}\n\n.filter-sub-tab a {\n    height: 1.3rem;\n    font-size: 0.5rem;\n    color: #343d40;\n    border-bottom: 3px solid #f2f2f2;\n    line-height: 1.2rem;\n    margin-right: 1rem;\n    float: left;\n    white-space: nowrap;\n}\n\n.sub-tab-holder {\n    height: 1.3rem;\n    padding: 0 1.2rem;\n    white-space: nowrap;\n    width: 20rem;\n}\n\n.filter-sub-tab a.current {\n    border-bottom-color: #7d83d6;\n    color: #7d83d6;\n}\n\n.filter-sub-tabcon {\n    overflow: auto;\n    margin: 0.3rem 0 0 0.55rem;\n    height: 5rem;\n    width: 15.45rem;\n}\n\n.filter-model-list {\n    float: left;\n    height: 5rem;\n    width: 36rem;\n    overflow: hidden;\n}\n\n.filter-model-item {\n    float: left;\n    width: 4.5rem;\n    height: 5rem;\n    margin-right: 1.5rem;\n    overflow: hidden;\n}\n\n.filter-model-item img {\n    display: block;\n    width: 4.5rem;\n    height: 3rem;\n    margin-bottom: 0.2rem;\n}\n\n.filter-model-item p {\n    height: 0.9rem;\n    line-height: 0.9rem;\n    font-size: 0.5rem;\n}\n\n.filter-model-title {\n    color: #343d40;\n}\n\n.filter-model-price {\n    color: #e74816;\n}\n\n.guide-test {\n    margin-top: 0.7rem;\n}\n\n.guide-test-content {\n    width: 14.7rem;\n    margin: 0 auto;\n    padding-top: 0.6rem;\n}\n\n.guide-news-photo {\n    width: 14.7rem;\n    height: 7.1rem;\n    position: relative;\n}\n\n.guide-news-photo img {\n    width: 14.7rem;\n    height: 7.1rem;\n}\n\n.guide-news-title {\n    height: 1rem;\n    line-height: 1rem;\n    color: white;\n    font-size: 0.65rem;\n    text-align: center;\n    position: absolute;\n    overflow: hidden;\n    top: 2.5rem;\n    left: 0;\n    width: 100%;\n}\n\n.guide-test .guide-news-type {\n    width: 14.7rem;\n    height: 0.75rem;\n    background-image: url(http://i1.dd-img.com/assets/image/1482400796-3462ba7079606563-588w-30h.png);\n    background-repeat: no-repeat;\n    background-size: cover;\n    position: absolute;\n    left: 0;\n    bottom: 2.3rem;\n}\n\n.guide-news-list {\n    padding-top: 0.75rem;\n}\n\n.guide-news-list li {\n    height: 0.85rem;\n    margin-bottom: 0.7rem;\n}\n\n.guide-news-ico {\n    float: left;\n    width: 2.7rem;\n    height: 0.85rem;\n    border: 1px solid #a0a0a0;\n    line-height: 0.8rem;\n    text-align: center;\n    color: #a0a0a0;\n    font-size: 0.45rem;\n    margin-right: 0.6rem;\n}\n\n.guide-news-text {\n    width: 11.4rem;\n    float: left;\n    height: 0.85rem;\n    line-height: 0.85rem;\n    font-size: 0.6rem;\n    color: #343d40;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n}\n\n.guide-video {\n    margin-top: 0.3rem;\n}\n\n.guide-video-content {\n    width: 15.45rem;\n    margin: 0.5rem 0 0 0.55rem;\n    overflow: auto;\n    height: 5.8rem;\n}\n\n.guide-video-list {\n    float: left;\n    width: 24.6rem;\n    height: 5.8rem;\n    overflow: hidden;\n}\n\n.guide-video-item {\n    float: left;\n    width: 11.5rem;\n    height: 5.8rem;\n    margin-right: 0.8rem;\n    position: relative;\n    overflow: hidden;\n}\n\n.guide-video-item img {\n    width: 11.5rem;\n    height: 5.8rem;\n}\n\n.guide-video .guide-news-type {\n    width: 11.5rem;\n    height: 0.85rem;\n    background-image: url(http://i1.dd-img.com/assets/image/1482402091-39141ba600f7ab4b-460w-34h.png);\n    background-repeat: no-repeat;\n    background-size: cover;\n    position: absolute;\n    left: 0;\n    bottom: 1.5rem;\n}\n\n.guide-video .guide-news-cover {\n    position: absolute;\n    width: 11.5rem;\n    height: 5.8rem;\n    top: 0;\n    left: 0;\n}\n\n.guide-model {\n    margin-top: 1.2rem;\n}\n\n.guide-model-content {\n    width: 15.45rem;\n    margin: 0.5rem 0 0 0.55rem;\n    overflow: auto;\n    height: 5.8rem;\n}\n\n.guide-model-list {\n    float: left;\n    width: 24.6rem;\n    height: 5.8rem;\n    overflow: hidden;\n}\n\n.guide-model-item {\n    float: left;\n    width: 11.5rem;\n    height: 5.8rem;\n    margin-right: 0.8rem;\n    position: relative;\n    overflow: hidden;\n}\n\n.guide-model-item img {\n    width: 11.5rem;\n    height: 5.8rem;\n}\n\n.guide-model .guide-news-type {\n    width: 11.5rem;\n    height: 0.85rem;\n    background-image: url(http://i1.dd-img.com/assets/image/1482402091-39141ba600f7ab4b-460w-34h.png);\n    background-repeat: no-repeat;\n    background-size: cover;\n    position: absolute;\n    left: 0;\n    bottom: 1.5rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
 
 
 /***/ }

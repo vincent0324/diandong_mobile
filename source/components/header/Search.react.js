@@ -4,7 +4,7 @@ var $ = require('zepto');
 var Search = React.createClass({
 
     getInitialState: function() {
-        return {searchPlaceholderValue: null, keywords: ''};
+        return {searchPlaceholderValue: null, keywords: '', focus: false};
     },
 
     handleKeywordChange: function(event) {
@@ -21,6 +21,14 @@ var Search = React.createClass({
             : this.state.searchPlaceholderValue;
 
         document.location.href = 'http://search.diandong.com/zonghe/?words=' + searchKeywords;
+    },
+
+    handleFocus: function() {
+        this.setState({focus: true});
+    },
+
+    handleBlur: function() {
+        this.setState({focus: false});
     },
 
     componentWillMount: function() {
@@ -44,8 +52,10 @@ var Search = React.createClass({
     render: function() {
         return (
             <div className="search-wrapper" id="search-wrapper">
-                <div className="search-bar">
-                    <input className="search-input" type="text" value={this.state.keywords} onChange={this.handleKeywordChange} placeholder={this.state.searchPlaceholderValue}/>
+                <div className={this.state.focus
+                    ? "search-bar focus"
+                    : "search-bar"}>
+                    <input className="search-input" type="text" value={this.state.keywords} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleKeywordChange} placeholder={this.state.searchPlaceholderValue}/>
                     <a className="search-submit-btn" href="javascript:;" onClick={this.handleSubmit}>
                         <i className="icon">&#xe60a;</i>
                     </a>

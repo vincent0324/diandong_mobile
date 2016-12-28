@@ -1,4 +1,5 @@
 var React = require('react');
+var $ = require('jquery');
 var City = require('../city/City.react');
 var Search = require('./Search.react');
 var Nav = require('./Nav.react');
