@@ -296,6 +296,7 @@
 
 .guide-news-title {
     height: 1rem;
+    font-weight: bold;
     line-height: 1rem;
     color: white;
     font-size: 0.65rem;
@@ -443,4 +444,13 @@
     position: absolute;
     left: 0;
     bottom: 1.5rem;
+}
+
+.guide-news-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
 }

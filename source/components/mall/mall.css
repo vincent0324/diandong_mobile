@@ -207,8 +207,9 @@
 }
 
 .mall-item-pic img {
-    width: 7rem;
     height: 3rem;
+    display: block;
+    margin: 0 auto;
 }
 
 .mall-item-info {
@@ -250,6 +251,20 @@
     color: #272f33;
     display: inline-block;
     vertical-align: middle;
+    float: left;
+}
+
+.mall-local-city {
+    float: right;
+}
+
+.mall-local-city i {
+    font-size: 0.55rem;
+}
+
+.mall-local-city a {
+    color: #e60012;
+    font-size: 0.55rem;
 }
 
 .mall-local-header::before {
@@ -275,16 +290,17 @@
 }
 
 .local-item-pic p {
-    height: 1rem;
-    line-height: 1rem;
+    line-height: 7rem;
     text-align: center;
     font-size: 0.65rem;
     overflow: hidden;
     color: white;
     position: absolute;
-    top: 3rem;
+    top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .mall-local-content {
@@ -294,7 +310,7 @@
 
 .local-item-news li {
     height: 0.7rem;
-    margin: 0.3rem 0;
+    margin: 0.5rem 0;
 }
 
 .local-item-news {
@@ -303,7 +319,7 @@
 
 .local-item-news li span {
     float: left;
-    width: 1.5rem;
+    width: 2.7rem;
     height: 0.7rem;
     border: 1px solid #e60012;
     line-height: 0.65rem;
@@ -314,7 +330,7 @@
 }
 
 .local-item-news li a {
-    width: 12.6rem;
+    width: 11.4rem;
     height: 0.7rem;
     line-height: 0.7rem;
     overflow: hidden;
