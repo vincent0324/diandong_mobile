@@ -41,7 +41,6 @@ define(function(require, exports, module) {
                 wrapperClass: 'mall-wrapper',
                 slideClass: 'mall-slide',
                 autoplay: 3000,
-                // speed: 1000,
                 loop: true,
                 mode: 'vertical'
             });
@@ -52,10 +51,7 @@ define(function(require, exports, module) {
                 wrapperClass: 'event-wrapper',
                 slideClass: 'event-slide',
                 pagination: '.event-pages',
-                // autoplay: 3000,
-                // speed: 1000,
                 loop: true
-                // mode: 'vertical'
             });
         },
 

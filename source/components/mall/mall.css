@@ -269,13 +269,13 @@
 
 .mall-local-header::before {
     content: "";
-    width: 8px;
-    height: 8px;
-    display: inline-block;
-    vertical-align: middle;
+    width: 0.2rem;
+    height: 0.2rem;
     margin-right: 0.35rem;
     background-color: #e60012;
     transform: rotate(45deg);
+    float: left;
+    margin: 0.4rem 0.35rem 0 0;
 }
 
 .local-item-pic {
