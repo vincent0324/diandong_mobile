@@ -48,9 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
-	var Service = __webpack_require__(178);
+	var AppDownloadOverlay = __webpack_require__(178);
 
-	ReactDOM.render(React.createElement(Service, null), document.getElementById('service-holder'));
+	ReactDOM.render(React.createElement(AppDownloadOverlay, null), document.getElementById('app-download-overlay'));
 
 /***/ },
 /* 1 */
@@ -21466,85 +21466,220 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var Cookie = __webpack_require__(179);
 
-	__webpack_require__(179);
+	__webpack_require__(180);
 
-	var Service = React.createClass({
-	    displayName: 'Service',
+	var AppDownloadOverlay = React.createClass({
+	    displayName: 'AppDownloadOverlay',
 
+
+	    getInitialState: function getInitialState() {
+	        return { hasOverlay: true };
+	    },
+
+	    componentWillMount: function componentWillMount() {
+	        var cookieValueOfOverlay = Cookie.get('appoverlay');
+
+	        if (cookieValueOfOverlay && cookieValueOfOverlay === '1') {
+	            this.setState({ hasOverlay: false });
+	        } else {
+	            this.setState({ hasOverlay: true });
+	        }
+	    },
+
+	    removeOverlay: function removeOverlay() {
+	        this.setState({
+	            hasOverlay: false
+	        });
+
+	        Cookie.set('appoverlay', '1', { expires: 1 });
+	    },
 
 	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            { id: 'service', className: 'service' },
-	            React.createElement(
+
+	        if (this.state.hasOverlay) {
+
+	            return React.createElement(
 	                'div',
-	                { className: 'wrap' },
+	                { className: 'app-download-overlay' },
 	                React.createElement(
-	                    'a',
-	                    { className: 'service-item-helper', href: 'http://www.diandong.com/yaohao/' },
-	                    React.createElement('i', null),
+	                    'div',
+	                    { className: 'wrap' },
+	                    React.createElement('div', { className: 'overlay-logo' }),
 	                    React.createElement(
-	                        'em',
-	                        null,
-	                        '\u6447\u53F7\u52A9\u624B'
-	                    )
-	                ),
-	                React.createElement(
-	                    'a',
-	                    { className: 'service-item-product', href: 'http://car.diandong.com/' },
-	                    React.createElement('i', null),
+	                        'div',
+	                        { className: 'overlay-text' },
+	                        React.createElement(
+	                            'h5',
+	                            null,
+	                            '\u7535\u52A8\u90A6\u624B\u673A\u5BA2\u6237\u7AEF'
+	                        ),
+	                        React.createElement(
+	                            'p',
+	                            null,
+	                            '\u65B0\u80FD\u6E90\u6C7D\u8F66\u4E00\u7AD9\u5F0F\u670D\u52A1\u5E73\u53F0'
+	                        )
+	                    ),
 	                    React.createElement(
-	                        'em',
-	                        null,
-	                        '\u8F66\u578B\u5927\u5168'
-	                    )
-	                ),
-	                React.createElement(
-	                    'a',
-	                    { className: 'service-item-test', href: 'http://www.diandong.com/tiyandian/' },
-	                    React.createElement('i', null),
+	                        'a',
+	                        { className: 'overlay-button', href: 'http://m.diandong.com/app/' },
+	                        '\u4E0B\u8F7DAPP'
+	                    ),
 	                    React.createElement(
-	                        'em',
-	                        null,
-	                        '\u514D\u8D39\u8BD5\u9A7E'
-	                    )
-	                ),
-	                React.createElement(
-	                    'a',
-	                    { className: 'service-item-mall', href: 'http://www.diandong.com/mall/' },
-	                    React.createElement('i', null),
-	                    React.createElement(
-	                        'em',
-	                        null,
-	                        '\u9650\u65F6\u7279\u60E0'
+	                        'a',
+	                        { className: 'overlay-close', onClick: this.removeOverlay, href: 'javascript:;' },
+	                        React.createElement(
+	                            'i',
+	                            { className: 'icon' },
+	                            '\uE601'
+	                        )
 	                    )
 	                )
-	            )
-	        );
+	            );
+	        }
+
+	        return null;
 	    }
 	});
 
-	module.exports = Service;
+	module.exports = AppDownloadOverlay;
 
 /***/ },
 /* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+
+	// https://github.com/2046/cookie
+
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+
+	    'use strict';
+
+	    var decode, encode;
+
+	    decode = decodeURIComponent;
+	    encode = encodeURIComponent;
+
+	    exports.get = function (key, opt) {
+	        opt = opt || {};
+	        validateCookieName(key);
+	        return (opt.converter || same)(parseCookieString(document.cookie, !opt.raw)[key]);
+	    };
+
+	    exports.set = function (key, val, opt) {
+	        var expires, domain, path, text, date;
+
+	        validateCookieName(key);
+
+	        opt = opt || {};
+	        path = opt.path;
+	        expires = opt.expires;
+	        domain = opt.domain;
+
+	        if (!opt.raw) {
+	            val = encode(String(val));
+	        }
+
+	        date = expires;
+	        text = key + '=' + val;
+
+	        if (typeof date === 'number') {
+	            date = new Date();
+	            date.setDate(date.getDate() + expires);
+	        }
+
+	        if (date instanceof Date) {
+	            text += '; expires=' + date.toUTCString();
+	        }
+
+	        if (isNonEmptyString(domain)) {
+	            text += '; domain=' + domain;
+	        }
+
+	        if (isNonEmptyString(path)) {
+	            text += '; path=' + path;
+	        }
+
+	        if (opt.secure) {
+	            text += '; secure';
+	        }
+
+	        document.cookie = text;
+	        return text;
+	    };
+
+	    exports.remove = function (key, opt) {
+	        opt = opt || {};
+	        opt.expires = new Date(0);
+	        return this.set(key, '', opt);
+	    };
+
+	    function parseCookieString(text, shouldDecode) {
+	        var cookies, cookieKey, cookieVal, cookieKeyVal, decodeVal, cookieParts, index, len;
+
+	        cookies = {};
+	        decodeVal = shouldDecode ? decode : same;
+
+	        if (typeof text === 'string' && text.length > 0) {
+	            cookieParts = text.split(/;\s/g);
+
+	            for (index = 0, len = cookieParts.length; index < len; index++) {
+	                cookieKeyVal = cookieParts[index].match(/([^=]+)=/i);
+
+	                if (cookieKeyVal instanceof Array) {
+	                    try {
+	                        cookieKey = decode(cookieKeyVal[1]);
+	                        cookieVal = decodeVal(cookieParts[index].substring(cookieKeyVal[1].length + 1));
+	                    } catch (e) {}
+	                } else {
+	                    cookieVal = '';
+	                    cookieKey = decode(cookieParts[index]);
+	                }
+
+	                if (cookieKey) {
+	                    cookies[cookieKey] = cookieVal;
+	                }
+	            }
+	        }
+
+	        return cookies;
+	    };
+
+	    function same(str) {
+	        return str;
+	    };
+
+	    function isNonEmptyString(str) {
+	        return typeof str === 'string' && str !== '';
+	    };
+
+	    function validateCookieName(key) {
+	        if (!isNonEmptyString(key)) {
+	            throw new TypeError('Cookie name must be a non-empty string');
+	        }
+	    };
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(180);
+	var content = __webpack_require__(181);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(182)(content, {});
+	var update = __webpack_require__(183)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./service.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./service.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./appDownloadOverlay.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./appDownloadOverlay.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21554,21 +21689,21 @@
 	}
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(181)();
+	exports = module.exports = __webpack_require__(182)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".service {\n    background-color: white;\n}\n\n.service a {\n    display: inline-block;\n    width: 4rem;\n    height: 3rem;\n}\n\n.service .wrap {\n    font-size: 0;\n    padding: 0.6rem 0 0.2rem;\n}\n\n.service a i {\n    display: block;\n    width: 1.7rem;\n    height: 1.7rem;\n    margin: 0 auto;\n    border-radius: 50%;\n    background-size: cover;\n    background-repeat: no-repeat;\n}\n\n.service-item-helper i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482376645-ceff8bc61bc7a9bb-68w-68h.png);\n    background-color: #7d83d6;\n}\n\n.service-item-product i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482376645-1a5f3f9ceabf1d07-68w-68h.png);\n    background-color: #14d7a7;\n}\n\n.service-item-test i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482376645-65d2faabe50a8bfc-68w-68h.png);\n    background-color: #00a0e9;\n}\n\n.service-item-mall i {\n    background-image: url(http://i1.dd-img.com/assets/image/1482376646-becb833647ecdc4b-68w-68h.png);\n    background-color: #d52244;\n}\n\n.service em {\n    display: block;\n    height: 1.3rem;\n    line-height: 1.3rem;\n    text-align: center;\n    color: #343d40;\n    font-size: 0.5rem;\n    font-style: normal;\n}\n", ""]);
+	exports.push([module.id, ".app-download-overlay {\n    width: 100%;\n    min-width: 16rem;\n    left: 0;\n    bottom: 0;\n    position: fixed;\n    background-color: rgba(0, 0, 0, 0.5);\n    z-index: 200;\n}\n\n.app-download-overlay .wrap {\n    height: 2.5rem;\n    position: relative;\n}\n\n.overlay-logo {\n    width: 2rem;\n    height: 2rem;\n    position: absolute;\n    top: 0.25rem;\n    left: 0.25rem;\n    background-image: url(http://i1.dd-img.com/assets/image/1479283288-405964cd50fc7ae9-160w-160h.png);\n    background-size: cover;\n    background-repeat: no-repeat;\n}\n\n.overlay-text {\n    position: absolute;\n    top: 0.6rem;\n    left: 2.5rem;\n}\n\n.overlay-text h5 {\n    height: 0.8rem;\n    color: white;\n    font-size: 0.6rem;\n    line-height: 0.8rem;\n}\n\n.overlay-text p {\n    height: 0.7rem;\n    line-height: 0.7rem;\n    color: white;\n    font-size: 0.45rem;\n}\n\n.overlay-button {\n    position: absolute;\n    width: 3.2rem;\n    height: 1.3rem;\n    border-radius: 3px;\n    background-color: #3595e7;\n    color: white;\n    line-height: 1.3rem;\n    text-align: center;\n    font-size: 0.5rem;\n    top: 0.6rem;\n    right: 3rem;\n}\n\n.overlay-close {\n    position: absolute;\n    width: 1rem;\n    height: 1rem;\n    border-radius: 50%;\n    line-height: 1rem;\n    text-align: center;\n    background-color: #e6e6e6;\n    color: #939393;\n    top: 0.75rem;\n    right: 0.5rem;\n}\n\n.overlay-close i {\n    font-size: 0.9rem;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports) {
 
 	/*
@@ -21624,7 +21759,7 @@
 
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

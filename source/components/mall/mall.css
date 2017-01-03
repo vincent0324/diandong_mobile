@@ -291,6 +291,7 @@
 
 .local-item-pic p {
     line-height: 7rem;
+    font-weight: bold;
     text-align: center;
     font-size: 0.65rem;
     overflow: hidden;
