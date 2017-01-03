@@ -3,11 +3,11 @@ var path = require('path');
 
 var config = {
     entry: {
-        appDownloadOverlay: path.resolve(__dirname, 'source/components/appDownloadOverlay/app.js')
+        social: path.resolve(__dirname, 'source/components/social/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/appDownloadOverlay'),
+        path: path.resolve(__dirname, 'source/components/social'),
         filename: '[name].debug.js'
     },
 
