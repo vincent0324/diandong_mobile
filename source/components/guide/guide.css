@@ -205,6 +205,7 @@
     background-color: #f2f2f2;
     font-size: 0;
     overflow: auto;
+    overflow-y: hidden;
 }
 
 .filter-sub-tab a {
@@ -232,6 +233,7 @@
 
 .filter-sub-tabcon {
     overflow: auto;
+    overflow-y: hidden;
     margin: 0.3rem 0 0 0.55rem;
     height: 5rem;
     width: 15.45rem;
@@ -360,6 +362,7 @@
     width: 15.45rem;
     margin: 0.5rem 0 0 0.55rem;
     overflow: auto;
+    overflow-y: hidden;
     height: 5.8rem;
 }
 
@@ -411,6 +414,7 @@
     width: 15.45rem;
     margin: 0.5rem 0 0 0.55rem;
     overflow: auto;
+    overflow-y: hidden;
     height: 5.8rem;
 }
 
