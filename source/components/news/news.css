@@ -187,6 +187,11 @@
     color: #14d7a7;
 }
 
+.more-news-button:active {
+    background-color: #14d7a7;
+    color: white;
+}
+
 .news-focus-cover {
     position: absolute;
     top: 0.5rem;
