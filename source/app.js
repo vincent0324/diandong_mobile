@@ -51,6 +51,6 @@ var Footer = require('./components/footer/Footer.react');
 ReactDOM.render(<Footer/>, document.getElementById('footer-holder'));
 
 // appoverlay
-// var AppDownloadOverlay = require('./components/appDownloadOverlay/AppDownloadOverlay.react');
-//
-// ReactDOM.render(<AppDownloadOverlay/>, document.getElementById('app-download-overlay'));
+var AppOverlay = require('./components/appOverlay/AppOverlay.react');
+
+ReactDOM.render(<AppOverlay/>, document.getElementById('app-overlay'));

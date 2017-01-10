@@ -1,0 +1,76 @@
+.app-download-overlay {
+    width: 100%;
+    min-width: 16rem;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+}
+
+.app-download-overlay .wrap {
+    height: 2.5rem;
+    position: relative;
+}
+
+.overlay-logo {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    background-image: url(http://i1.dd-img.com/assets/image/1479283288-405964cd50fc7ae9-160w-160h.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 0.6rem;
+    left: 2.5rem;
+}
+
+.overlay-text h5 {
+    height: 0.8rem;
+    color: white;
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+}
+
+.overlay-text p {
+    height: 0.7rem;
+    line-height: 0.7rem;
+    color: white;
+    font-size: 0.45rem;
+}
+
+.overlay-button {
+    position: absolute;
+    width: 3.2rem;
+    height: 1.3rem;
+    border-radius: 3px;
+    background-color: #3595e7;
+    color: white;
+    line-height: 1.3rem;
+    text-align: center;
+    font-size: 0.5rem;
+    top: 0.6rem;
+    right: 3rem;
+}
+
+.overlay-close {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    line-height: 1rem;
+    text-align: center;
+    background-color: #e6e6e6;
+    color: #939393;
+    top: 0.75rem;
+    right: 0.5rem;
+}
+
+.overlay-close i {
+    font-size: 0.9rem;
+}

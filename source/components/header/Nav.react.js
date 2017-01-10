@@ -13,7 +13,7 @@ var Nav = React.createClass({
                     <a href="http://m.diandong.com/video/" className="nav-item-video">视频</a>
                     <a href="http://www.diandong.com/mall/" className="nav-item-mall">商城</a>
                     <a href="http://m.diandong.com/tiyandian/" className="nav-item-shop">体验店</a>
-                    <a href="http://bbs.diandong.com/forum.php" className="nav-item-bbs">社区</a>
+                    <a href="http://bbs.diandong.com/forum.php" className="nav-item-bbs">论坛</a>
                     <a href="http://m.diandong.com/app/" className="nav-item-app">APP下载</a>
                 </div>
             </nav>

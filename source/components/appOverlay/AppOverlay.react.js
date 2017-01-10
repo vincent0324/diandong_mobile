@@ -3,7 +3,7 @@ var Cookie = require('cookie');
 
 require('./appOverlay.css');
 
-var AppDownloadOverlay = React.createClass({
+var AppOverlay = React.createClass({
 
     getInitialState: function() {
         return {hasOverlay: true};
@@ -20,17 +20,13 @@ var AppDownloadOverlay = React.createClass({
     },
 
     removeOverlay: function() {
-        this.setState({
-            hasOverlay: false
-        });
+        this.setState({hasOverlay: false});
 
         Cookie.set('appoverlay', '1', {expires: 1});
     },
 
     render: function() {
-
         if (this.state.hasOverlay) {
-
             return (
                 <div className="app-download-overlay">
                     <div className="wrap">
@@ -52,4 +48,4 @@ var AppDownloadOverlay = React.createClass({
     }
 });
 
-module.exports = AppDownloadOverlay;
+module.exports = AppOverlay;
