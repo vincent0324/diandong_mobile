@@ -26,6 +26,7 @@ var AppOverlay = React.createClass({
     },
 
     render: function() {
+
         if (this.state.hasOverlay) {
             return (
                 <div className="app-download-overlay">

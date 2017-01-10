@@ -25,7 +25,8 @@
 
 .news-nav {
     height: 1.5rem;
-    font-size: 0;
+    position: relative;
+    width: 16rem;
 }
 
 .news-nav a {
@@ -145,6 +146,7 @@
     height: 0.9rem;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 .news-focus-type em {
@@ -178,6 +180,10 @@
     background-image: url(http://i1.dd-img.com/assets/image/1483584403-8b0d8e8a7ab2d905-36w-36h.png);
 }
 
+.news-type-use .news-focus-type i {
+    background-image: url(http://i1.dd-img.com/assets/image/1484030362-90d6258369a6a488-28w-28h.png);
+}
+
 .more-news-button {
     display: block;
     margin: 0.5rem auto 0;
@@ -203,4 +209,30 @@
     bottom: 0.5rem;
     left: 0;
     background-color: rgba(0, 0, 0, 0.3);
+}
+
+.news-nav-holder {
+    width: 16rem;
+    height: 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.news-nav-list {
+    width: 24rem;
+    height: 1.5rem;
+    font-size: 0;
+}
+
+.news-nav::after {
+    position: absolute;
+    width: 2rem;
+    height: 1.5rem;
+    background-color: white;
+    content: "";
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    outline: none;
 }
