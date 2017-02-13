@@ -3,11 +3,11 @@ var path = require('path');
 
 var config = {
     entry: {
-        appOverlay: path.resolve(__dirname, 'source/components/appOverlay/app.js')
+        mall: path.resolve(__dirname, 'source/components/mall/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/appOverlay'),
+        path: path.resolve(__dirname, 'source/components/mall'),
         filename: '[name].debug.js'
     },
 
