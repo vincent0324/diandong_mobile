@@ -25,7 +25,7 @@ var Header = React.createClass({
                 <div className="header-content">
                     <div className="wrap">
                         <div id="logo" className="logo fn-left">
-                            <a href="http://m.diandong.com/">电动邦</a>
+                            <a href="http://m.diandong.com/">电动汽车网-电动邦</a>
                         </div>
                         <div id="slogan" className="slogan fn-left">
                             <em>买电动车 上电动邦</em>
