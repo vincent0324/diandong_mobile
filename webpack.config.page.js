@@ -1,8 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var config = {
+const config = {
     entry: {
         vendor: [
             'react', 'react-dom'
@@ -17,20 +17,20 @@ var config = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'react']
                 }
             }, {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+                loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
             }, {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+                loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
             }, {
                 test: /\.(png|woff|svg|ttf|eot)$/,
                 loader: 'url-loader?limit=10000'
@@ -65,9 +65,6 @@ var config = {
     ],
 
     resolve: {
-        extensions: [
-            '', '.js', '.json', '.scss'
-        ],
         alias: {
             zepto: path.resolve(__dirname, 'source/lib/zepto/zepto'),
             cookie: path.resolve(__dirname, 'source/lib/cookie/cookie'),
