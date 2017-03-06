@@ -1,10 +1,10 @@
-var React = require('react');
+import React from 'react';
 
-require('./service.css');
+import './service.css';
 
-var Service = React.createClass({
+class Service extends React.Component {
 
-    render: function() {
+    render() {
         return (
             <div id="service" className="service">
                 <div className="wrap">
@@ -28,6 +28,6 @@ var Service = React.createClass({
             </div>
         );
     }
-});
+};
 
-module.exports = Service;
+export default Service;
