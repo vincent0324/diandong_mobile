@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Header = require('./Header.react');
+import React from 'react';
+import {render} from 'react-dom';
+import Header from './Header.react';
 
-ReactDOM.render(<Header/>, document.getElementById('header-holder'));
+render(<Header/>, document.getElementById('header-holder'));

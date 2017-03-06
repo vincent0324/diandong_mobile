@@ -1,22 +1,29 @@
-var React = require('react');
-var OverlayButton = require('./OverlayButton.react');
-var Overlay = require('./Overlay.react');
+import React from 'react';
+import OverlayButton from './OverlayButton.react';
+import Overlay from './Overlay.react';
 
-require('./header.css');
+import './header.css';
 
-var Header = React.createClass({
+class Header extends React.Component {
 
-    getInitialState: function() {
-        return {hasOverlay: false}
-    },
+    constructor(props) {
 
-    toggleOverlay: function() {
+        super(props);
+
+        this.toggleOverlay = this.toggleOverlay.bind(this);
+
+        this.state = {
+            hasOverlay: false
+        };
+    }
+
+    toggleOverlay() {
         this.setState({
             hasOverlay: !this.state.hasOverlay
         });
-    },
+    }
 
-    render: function() {
+    render() {
         return (
             <header id="header" className="header header-fixed" className={this.state.hasOverlay
                 ? "header header-fixed"
@@ -41,6 +48,6 @@ var Header = React.createClass({
             </header>
         );
     }
-});
+};
 
-module.exports = Header;
+export default Header;
