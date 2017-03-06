@@ -1,8 +1,8 @@
-var React = require('react');
+import React from 'react';
 
-var Nav = React.createClass({
+class Nav extends React.Component {
 
-    render: function() {
+    render() {
         return (
             <nav id="nav" className="nav">
                 <div className="nav-wrapper clearfix">
@@ -19,6 +19,6 @@ var Nav = React.createClass({
             </nav>
         );
     }
-});
+};
 
-module.exports = Nav;
+export default Nav;

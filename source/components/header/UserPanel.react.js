@@ -1,20 +1,26 @@
-var React = require('react');
-var User = require('user');
-var user = new User();
+import React from 'react';
+import User from 'user';
 
-var UserPanel = React.createClass({
+const user = new User();
 
-    getInitialState: function() {
-        return {userId: null, userAvatar: null};
-    },
+class UserPanel extends React.Component {
 
-    componentWillMount: function() {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            userId: null,
+            userAvatar: null
+        }
+    }
+
+    componentWillMount() {
         if (user.id !== '') {
             this.setState({userId: user.id, userAvatar: user.avatar});
         }
-    },
+    }
 
-    render: function() {
+    render() {
 
         if (this.state.userId) {
 
@@ -39,6 +45,6 @@ var UserPanel = React.createClass({
             </div>
         );
     }
-});
+};
 
-module.exports = UserPanel;
+export default UserPanel;

@@ -1,13 +1,12 @@
-var React = require('react');
-var $ = require('jquery');
-var City = require('../city/City.react');
-var Search = require('./Search.react');
-var Nav = require('./Nav.react');
-var UserPanel = require('./UserPanel.react');
+import React from 'react';
+import City from '../city/City.react';
+import Search from './Search.react';
+import Nav from './Nav.react';
+import UserPanel from './UserPanel.react';
 
-var Overlay = React.createClass({
+class Overlay extends React.Component {
 
-    render: function() {
+    render() {
 
         if (this.props.overlayState) {
             return (
@@ -39,6 +38,6 @@ var Overlay = React.createClass({
         return null;
 
     }
-});
+};
 
-module.exports = Overlay;
+export default Overlay;

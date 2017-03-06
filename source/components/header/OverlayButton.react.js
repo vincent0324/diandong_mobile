@@ -1,8 +1,8 @@
-var React = require('react');
+import React from 'react';
 
-var OverlayButton = React.createClass({
+class OverlayButton extends React.Component {
 
-    render: function() {
+    render() {
 
         if (this.props.overlayState) {
             return (
@@ -18,6 +18,6 @@ var OverlayButton = React.createClass({
             </a>
         );
     }
-});
+};
 
-module.exports = OverlayButton;
+export default OverlayButton;

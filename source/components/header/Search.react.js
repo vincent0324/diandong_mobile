@@ -1,19 +1,30 @@
-var React = require('react');
-var $ = require('zepto');
+import React from 'react';
+import $ from 'zepto';
 
-var Search = React.createClass({
+class Search extends React.Component {
 
-    getInitialState: function() {
-        return {searchPlaceholderValue: null, keywords: '', focus: false};
-    },
+    constructor(props) {
+        super(props);
 
-    handleKeywordChange: function(event) {
+        this.handleKeywordChange = this.handleKeywordChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+
+        this.state = {
+            searchPlaceholderValue: null,
+            keywords: '',
+            focus: false
+        }
+    }
+
+    handleKeywordChange(event) {
         var currentInputValue = event.target.value;
 
         this.setState({keywords: currentInputValue});
-    },
+    }
 
-    handleSubmit: function() {
+    handleSubmit() {
         var searchKeywords;
 
         searchKeywords = this.state.keywords
@@ -21,17 +32,17 @@ var Search = React.createClass({
             : this.state.searchPlaceholderValue;
 
         document.location.href = 'http://search.diandong.com/zonghe/?words=' + searchKeywords;
-    },
+    }
 
-    handleFocus: function() {
+    handleFocus() {
         this.setState({focus: true});
-    },
+    }
 
-    handleBlur: function() {
+    handleBlur() {
         this.setState({focus: false});
-    },
+    }
 
-    componentWillMount: function() {
+    componentWillMount() {
         this.getSearchPlaceholderRequest = $.ajax({
             url: 'http://car.diandong.com/api/getSectionData?sectionid=296',
             data: {},
@@ -43,13 +54,13 @@ var Search = React.createClass({
                 this.setState({searchPlaceholderValue: searchPlaceholderValue});
             }.bind(this)
         });
-    },
+    }
 
-    componentWillUnmount: function() {
+    componentWillUnmount() {
         this.getSearchPlaceholderRequest.abort();
-    },
+    }
 
-    render: function() {
+    render() {
         return (
             <div className="search-wrapper" id="search-wrapper">
                 <div className={this.state.focus
@@ -63,6 +74,6 @@ var Search = React.createClass({
             </div>
         );
     }
-});
+};
 
-module.exports = Search;
+export default Search;
