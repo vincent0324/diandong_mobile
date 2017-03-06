@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Footer = require('./Footer.react');
+import React from 'react';
+import {render} from 'react-dom';
+import Footer from './Footer.react';
 
-ReactDOM.render(<Footer/>, document.getElementById('footer-holder'));
+render(<Footer/>, document.getElementById('footer-holder'));

@@ -1,10 +1,18 @@
-var React = require('react');
+import React from 'react';
 
-require('./footer.css');
+import './footer.css';
 
-var Footer = React.createClass({
+class Footer extends React.Component {
 
-    render: function() {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            year: new Date().getFullYear()
+        }
+    }
+
+    render() {
         return (
             <div id="footer" className="footer">
                 <div id="feature-holder" className="feature-holder">
@@ -49,13 +57,13 @@ var Footer = React.createClass({
                             <i>|</i>
                             <a href="http://app.diandong.com/?app=guestbook&controller=index">意见反馈</a>
                         </div>
-                        <span className="fn-left">@2016电动邦</span>
+                        <span className="fn-left">@{this.state.year}电动邦</span>
                     </div>
                 </div>
                 <div id="return-top-holder" className="return-top-holder"></div>
             </div>
         );
     }
-});
+};
 
-module.exports = Footer;
+export default Footer;

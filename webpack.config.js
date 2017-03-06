@@ -4,11 +4,11 @@ const path = require('path');
 const config = {
 
     entry: {
-        header: path.resolve(__dirname, 'source/components/header/app.js')
+        footer: path.resolve(__dirname, 'source/components/footer/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/header'),
+        path: path.resolve(__dirname, 'source/components/footer'),
         filename: '[name].debug.js'
     },
 
