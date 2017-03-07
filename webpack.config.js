@@ -4,11 +4,11 @@ const path = require('path');
 const config = {
 
     entry: {
-        footer: path.resolve(__dirname, 'source/components/footer/app.js')
+        mall: path.resolve(__dirname, 'source/components/mall/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/footer'),
+        path: path.resolve(__dirname, 'source/components/mall'),
         filename: '[name].debug.js'
     },
 
