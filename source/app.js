@@ -1,56 +1,48 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import {render} from 'react-dom';
 
-require('./css/common.css');
-require('./css/home.css');
+import './css/common.css';
+import './css/home.css';
 
 // header
-var Header = require('./components/header/Header.react');
-
-ReactDOM.render(<Header/>, document.getElementById('header-holder'));
-
+import Header from './components/header/Header.react';
+render(<Header/>, document.getElementById('header-holder'));
 
 // filter
-var Filter = require('./components/filter/Filter');
-var filter = new Filter();
-
+const Filter = require('./components/filter/Filter');
+const filter = new Filter();
 
 // focus
-var Focus = require('./components/focus/Focus');
-var focus = new Focus();
-
+const Focus = require('./components/focus/Focus');
+const focus = new Focus();
 
 // service
-var Service = require('./components/service/Service.react');
-ReactDOM.render(<Service/>, document.getElementById('service-holder'));
-
+import Service from './components/service/Service.react';
+render(<Service/>, document.getElementById('service-holder'));
 
 // news
-var News = require('./components/news/News');
-var news = new News();
+const News = require('./components/news/News');
+const news = new News();
 
 
 // guide
-var Guide = require('./components/guide/Guide');
-var guide = new Guide();
+const Guide = require('./components/guide/Guide');
+const guide = new Guide();
 
 
 // mall
-var Mall = require('./components/mall/Mall');
-var mall = new Mall();
+const Mall = require('./components/mall/Mall');
+const mall = new Mall();
 
 
 // social
-var Social = require('./components/social/Social');
-var social = new Social();
-
+const Social = require('./components/social/Social');
+const social = new Social();
 
 // footer
-var Footer = require('./components/footer/Footer.react');
-
-ReactDOM.render(<Footer/>, document.getElementById('footer-holder'));
+import Footer from './components/footer/Footer.react';
+render(<Footer/>, document.getElementById('footer-holder'));
 
 // appoverlay
-var AppOverlay = require('./components/appOverlay/AppOverlay.react');
-
-ReactDOM.render(<AppOverlay/>, document.getElementById('app-overlay'));
+import AppOverlayStatic from './components/appOverlayStatic/AppOverlayStatic.react';
+render(<AppOverlayStatic/>, document.getElementById('app-overlay'));

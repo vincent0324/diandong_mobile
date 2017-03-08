@@ -56,12 +56,10 @@ const config = {
             }
         }),
 
+        new webpack.LoaderOptionsPlugin({minimize: true}),
+
         // 设置成生产环境
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production')
-            }
-        })
+        new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify('production')})
     ],
 
     resolve: {
