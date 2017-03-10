@@ -3,6 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
+    
     entry: {
         vendor: [
             'react', 'react-dom'
@@ -12,7 +13,6 @@ const config = {
 
     output: {
         path: path.resolve(__dirname, 'build'),
-        // filename: '[name].js'
         filename: '[hash:6].[name].js'
     },
 
@@ -39,14 +39,10 @@ const config = {
     },
 
     plugins: [
-        // new ExtractTextPlugin('[name].css'),
         new ExtractTextPlugin('[hash:6].[name].css'),
 
-        // 不变
-        // new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'}),
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: '[hash:6].vendor.bundle.js'}),
 
-        // 压缩代码
         new webpack.optimize.UglifyJsPlugin({
             output: {
                 comments: false
@@ -58,7 +54,6 @@ const config = {
 
         new webpack.LoaderOptionsPlugin({minimize: true}),
 
-        // 设置成生产环境
         new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify('production')})
     ],
 
