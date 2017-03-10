@@ -4,11 +4,11 @@ const path = require('path');
 const config = {
 
     entry: {
-        filter: path.resolve(__dirname, 'source/components/filter/app.js')
+        focus: path.resolve(__dirname, 'source/components/focus/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/filter'),
+        path: path.resolve(__dirname, 'source/components/focus'),
         filename: '[name].debug.js'
     },
 

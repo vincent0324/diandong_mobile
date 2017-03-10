@@ -13,8 +13,8 @@ import Filter from './components/filter/Filter';
 let filter = new Filter();
 
 // focus
-const Focus = require('./components/focus/Focus');
-const focus = new Focus();
+import Focus from './components/focus/Focus';
+let focus = new Focus();
 
 // service
 import Service from './components/service/Service.react';

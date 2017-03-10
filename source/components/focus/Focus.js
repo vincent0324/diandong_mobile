@@ -1,30 +1,28 @@
-define(function(require, exports, module) {
+import Swiper from 'swiper';
 
-    var $ = require('zepto');
-    var Swiper = require('swiper');
+import './focus.css';
 
-    require('./focus.css');
+class Focus {
 
-    var Focus = function() {
+    constructor() {
         this.init();
-    };
+    }
 
-    Focus.prototype = {
-        init: function() {
-            this.initFocusSwiper();
-        },
-        initFocusSwiper: function() {
-            var focusSwiper = new Swiper('.focus-container', {
-                pagination: '.focus-pages',
-                loop: true,
-                grabCursor: true,
-                autoplay: 5000,
-                autoplayDisableOnInteraction: false,
-                wrapperClass: 'focus-wrapper',
-                slideClass: 'focus-slide'
-            });
-        }
-    };
+    init() {
+        this.initFocusSwiper();
+    }
 
-    module.exports = Focus;
-});
+    initFocusSwiper() {
+        let focusSwiper = new Swiper('.focus-container', {
+            pagination: '.focus-pages',
+            loop: true,
+            grabCursor: true,
+            autoplay: 5000,
+            autoplayDisableOnInteraction: false,
+            wrapperClass: 'focus-wrapper',
+            slideClass: 'focus-slide'
+        });
+    }
+};
+
+export default Focus;
