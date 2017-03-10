@@ -1,31 +1,27 @@
-define(function(require, exports, module) {
+import $ from 'zepto';
+import QuickSelect from 'quickselect';
 
-    var $ = require('zepto');
-    var QuickSelect = require('quickselect');
+import './filter.css';
 
-    require('./filter.css');
+class Filter {
 
-    var Filter = function() {
+    constructor() {
         this.init();
-    };
+    }
 
-    Filter.prototype = {
+    init() {
+        QuickSelect.init();
+        this.bindEvent();
+    }
 
-        init: function() {
-            QuickSelect.init();
-            this.bindEvent();
-        },
+    bindEvent() {
+        $('.filter-tab-button').on('click', function() {
+            let index = $('.filter-tab-button').index(this);
 
-        bindEvent: function() {
+            $('.filter-tab-button').removeClass('current').eq(index).addClass('current');
+            $('.filter-tab-content').addClass('fn-hide').eq(index).removeClass('fn-hide');
+        });
+    }
+};
 
-            $('.filter-tab-button').on('click', function() {
-                var index = $('.filter-tab-button').index(this);
-
-                $('.filter-tab-button').removeClass('current').eq(index).addClass('current');
-                $('.filter-tab-content').addClass('fn-hide').eq(index).removeClass('fn-hide');
-            });
-        }
-    };
-
-    module.exports = Filter;
-});
+export default Filter;

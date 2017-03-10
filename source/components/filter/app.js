@@ -1,2 +1,3 @@
-var Filter = require('./Filter');
-var filter = new Filter();
+import Filter from './Filter';
+
+let filter = new Filter();

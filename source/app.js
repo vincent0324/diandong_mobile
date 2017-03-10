@@ -9,8 +9,8 @@ import Header from './components/header/Header.react';
 render(<Header/>, document.getElementById('header-holder'));
 
 // filter
-const Filter = require('./components/filter/Filter');
-const filter = new Filter();
+import Filter from './components/filter/Filter';
+let filter = new Filter();
 
 // focus
 const Focus = require('./components/focus/Focus');
