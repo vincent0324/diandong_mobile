@@ -1,37 +1,34 @@
-define(function(require, exports, module) {
+import $ from 'jquery';
 
-    var $ = require('jquery');
+import './guide.css';
 
-    require('./guide.css');
+class Guide {
 
-    var Guide = function() {
+    constructor() {
         this.init();
-    };
+    }
 
-    Guide.prototype = {
+    init() {
+        this.bindEvent();
+    }
 
-        init: function() {
-            this.bindEvent();
-        },
+    bindEvent() {
+        $('.filter-sub-tab a').on('click', function() {
+            let index = $(this).parents('.filter-sub-tab').find('a').index(this);
+            let tabContent = $(this).parents('.filter-sub-tab').siblings('.filter-sub-tabcon');
 
-        bindEvent: function() {
-            $('.filter-sub-tab a').on('click', function() {
-                var index = $(this).parents('.filter-sub-tab').find('a').index(this);
-                var tabContent = $(this).parents('.filter-sub-tab').siblings('.filter-sub-tabcon');
+            $(this).addClass('current').siblings('a').removeClass('current');
+            tabContent.addClass('fn-hide').eq(index).removeClass('fn-hide');
+        });
 
-                $(this).addClass('current').siblings('a').removeClass('current');
-                tabContent.addClass('fn-hide').eq(index).removeClass('fn-hide');
-            });
+        $('.filter-super-tab a').on('click', function() {
+            let index = $(this).parent('.filter-super-tab').find('a').index(this);
+            let tabContent = $(this).parents('.filter-super-tab').siblings('.filter-super-tabcon');
 
-            $('.filter-super-tab a').on('click', function() {
-                var index = $(this).parent('.filter-super-tab').find('a').index(this);
-                var tabContent = $(this).parents('.filter-super-tab').siblings('.filter-super-tabcon');
+            $(this).addClass('current').siblings('a').removeClass('current');
+            tabContent.addClass('fn-hide').eq(index).removeClass('fn-hide');
+        });
+    }
+};
 
-                $(this).addClass('current').siblings('a').removeClass('current');
-                tabContent.addClass('fn-hide').eq(index).removeClass('fn-hide');
-            });
-        }
-    };
-
-    module.exports = Guide;
-});
+export default Guide;
