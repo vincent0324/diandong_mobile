@@ -1,40 +1,37 @@
-define(function(require, exports, module) {
+import './social.css';
 
-    require('./social.css');
+class Social {
 
-    var Social = function() {
+    constructor() {
         this.init();
-    };
+    }
 
-    Social.prototype = {
+    init() {
+        this.setSocialListWidth();
+        this.setFriendListWidth();
+    }
 
-        init: function() {
-            this.setSocialListWidth();
-            this.setFriendListWidth();
-        },
+    getSocialItems() {
+        return document.querySelectorAll('.social-item');
+    }
 
-        getSocialItems: function() {
-            return document.querySelectorAll('.social-item');
-        },
+    setSocialListWidth() {
+        let socialListLength = this.getSocialItems().length;
+        let socialListWidth = 10.4 * socialListLength;
 
-        setSocialListWidth: function() {
-            var socialListLength = this.getSocialItems().length;
-            var socialListWidth = 10.4 * socialListLength;
+        document.querySelector('.social-list').style.width = socialListWidth + 'rem';
+    }
 
-            document.querySelector('.social-list').style.width = socialListWidth + 'rem';
-        },
+    getFriendItems() {
+        return document.querySelectorAll('.friend-item');
+    }
 
-        getFriendItems: function() {
-            return document.querySelectorAll('.friend-item');
-        },
+    setFriendListWidth() {
+        let friendListLength = this.getFriendItems().length;
+        let friendListWidth = 12.2 * friendListLength;
 
-        setFriendListWidth: function() {
-            var friendListLength = this.getFriendItems().length;
-            var friendListWidth = 12.2 * friendListLength;
+        document.querySelector('.friend-list').style.width = friendListWidth + 'rem';
+    }
+};
 
-            document.querySelector('.friend-list').style.width = friendListWidth + 'rem';
-        }
-    };
-
-    module.exports = Social;
-});
+export default Social;
