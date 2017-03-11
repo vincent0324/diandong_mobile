@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var AppOverlay = require('./AppOverlay.react');
+import React from 'react';
+import {render} from 'react-dom';
+import AppOverlay from './AppOverlay.react';
 
-ReactDOM.render(<AppOverlay/>, document.getElementById('app-overlay'));
+render(<AppOverlay/>, document.getElementById('app-overlay'));

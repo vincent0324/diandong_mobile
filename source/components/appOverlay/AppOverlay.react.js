@@ -1,15 +1,19 @@
-var React = require('react');
-var Cookie = require('cookie');
+import React from 'react';
+import Cookie from 'cookie';
 
-require('./appOverlay.css');
+import './appOverlay.css';
 
-var AppOverlay = React.createClass({
+class AppOverlay extends React.Component {
 
-    getInitialState: function() {
-        return {hasOverlay: true};
-    },
+    constructor(props) {
+        super(props);
 
-    componentWillMount: function() {
+        this.state = {
+            hasOverlay: true
+        }
+    }
+
+    componentWillMount() {
         var cookieValueOfOverlay = Cookie.get('appoverlay');
 
         if (cookieValueOfOverlay && cookieValueOfOverlay === '1') {
@@ -17,15 +21,15 @@ var AppOverlay = React.createClass({
         } else {
             this.setState({hasOverlay: true});
         }
-    },
+    }
 
-    removeOverlay: function() {
+    removeOverlay() {
         this.setState({hasOverlay: false});
 
         Cookie.set('appoverlay', '1', {expires: 1});
-    },
+    }
 
-    render: function() {
+    render() {
 
         if (this.state.hasOverlay) {
             return (
@@ -37,7 +41,7 @@ var AppOverlay = React.createClass({
                             <p>新能源汽车一站式服务平台</p>
                         </div>
                         <a className="overlay-button" href="http://m.diandong.com/app/">下载APP</a>
-                        <a className="overlay-close" onClick={this.removeOverlay} href="javascript:;">
+                        <a className="overlay-close" onClick={this.removeOverlay.bind(this)} href="javascript:;">
                             <i className="icon">&#xe601;</i>
                         </a>
                     </div>
@@ -47,6 +51,6 @@ var AppOverlay = React.createClass({
 
         return null;
     }
-});
+};
 
-module.exports = AppOverlay;
+export default AppOverlay;
