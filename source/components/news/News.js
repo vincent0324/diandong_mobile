@@ -1,27 +1,25 @@
-define(function(require, exports, module) {
+import $ from 'zepto';
 
-    var $ = require('zepto');
+import './news.css';
 
-    require('./news.css');
+class News {
 
-    var News = function() {
+    constructor() {
         this.init();
-    };
+    }
 
-    News.prototype = {
-        init: function() {
-            this.bindEvent();
-        },
+    init() {
+        this.bindEvent();
+    }
 
-        bindEvent: function() {
-            $('.news-nav a').on('click', function() {
-                var index = $('.news-nav a').index(this);
+    bindEvent() {
+        $('.news-nav a').on('click', function() {
+            var index = $('.news-nav a').index(this);
 
-                $('.news-nav a').removeClass('current').eq(index).addClass('current');
-                $('.news-tab-content').addClass('fn-hide').eq(index).removeClass('fn-hide');
-            });
-        }
-    };
+            $('.news-nav a').removeClass('current').eq(index).addClass('current');
+            $('.news-tab-content').addClass('fn-hide').eq(index).removeClass('fn-hide');
+        });
+    }
+};
 
-    module.exports = News;
-});
+export default News;

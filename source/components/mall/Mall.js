@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'zepto';
 import Swiper from 'swiper';
 import Countdown from 'countdown';
 import Area from 'area';
