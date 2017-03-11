@@ -21,23 +21,20 @@ import Service from './components/service/Service.react';
 render(<Service/>, document.getElementById('service-holder'));
 
 // news
-const News = require('./components/news/News');
-const news = new News();
-
+import News from './components/news/News';
+let news = new News();
 
 // guide
-const Guide = require('./components/guide/Guide');
-const guide = new Guide();
-
+import Guide from './components/guide/Guide';
+let guide = new Guide();
 
 // mall
-const Mall = require('./components/mall/Mall');
-const mall = new Mall();
-
+import Mall from './components/mall/Mall';
+let mall = new Mall();
 
 // social
-const Social = require('./components/social/Social');
-const social = new Social();
+import Social from './components/social/Social';
+let social = new Social();
 
 // footer
 import Footer from './components/footer/Footer.react';
