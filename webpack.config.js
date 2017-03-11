@@ -4,11 +4,11 @@ const path = require('path');
 const config = {
 
     entry: {
-        social: path.resolve(__dirname, 'source/components/social/app.js')
+        city: path.resolve(__dirname, 'source/components/city/app.js')
     },
 
     output: {
-        path: path.resolve(__dirname, 'source/components/social'),
+        path: path.resolve(__dirname, 'source/components/city'),
         filename: '[name].debug.js'
     },
 

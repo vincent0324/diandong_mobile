@@ -1,25 +1,29 @@
-var React = require('react');
-var $ = require('zepto');
-var Cookie = require('cookie');
+import React from 'react';
+import $ from 'zepto';
+import Cookie from 'cookie';
 
-require('./city.css');
+import './city.css';
 
-var City = React.createClass({
+class City extends React.Component {
 
-    getInitialState: function() {
-        return {currentCity: '北京'}
-    },
+    constructor(props) {
+        super(props);
 
-    getCurrentCityFromCookie: function() {
+        this.state = {
+            currentCity: '北京'
+        }
+    }
+
+    getCurrentCityFromCookie() {
 
         if (!!Cookie.get('cityName')) {
             return true;
         }
 
         return false;
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount() {
 
         if (this.getCurrentCityFromCookie()) {
             this.setState({currentCity: Cookie.get('cityName')});
@@ -36,14 +40,9 @@ var City = React.createClass({
                 }.bind(this)
             });
         }
-    },
+    }
 
-    // componentWillUnmount: function() {
-    //     this.getCurrentCityRequest.abort();
-    // },
-
-    render: function() {
-
+    render() {
         return (
             <div className="current-city">
                 <i className="icon">&#xe659;</i>
@@ -51,6 +50,6 @@ var City = React.createClass({
             </div>
         );
     }
-});
+};
 
-module.exports = City;
+export default City;
