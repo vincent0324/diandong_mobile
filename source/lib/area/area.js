@@ -1,30 +1,24 @@
-define(function(require, exports, module) {
+import Cookie from 'cookie';
 
-    'use strict';
+class Area {
 
-    var Cookie, area;
+    init(callback) {
+        this.getCityId();
+        this.getCityName();
+        callback && callback();
+    }
 
-    Cookie = require('cookie');
-
-    area = {
-        id: '',
-        name: '',
-        init: function(callback) {
-            this.getCityId();
-            this.getCityName();
-            callback && callback();
-        },
-        getCityId: function() {
-            if (Cookie.get('cityId')) {
-                this.id = Cookie.get('cityId');
-            }
-        },
-        getCityName: function() {
-            if (Cookie.get('cityName')) {
-                this.name = Cookie.get('cityName');
-            }
+    getCityId() {
+        if (Cookie.get('cityId')) {
+            this.id = Cookie.get('cityId');
         }
-    };
+    }
 
-    module.exports = area;
-});
+    getCityName() {
+        if (Cookie.get('cityName')) {
+            this.name = Cookie.get('cityName');
+        }
+    }
+};
+
+export default Area;

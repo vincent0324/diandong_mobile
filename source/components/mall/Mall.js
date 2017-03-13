@@ -54,13 +54,15 @@ class Mall {
     }
 
     getLocalNews() {
-        Area.init(function() {
-            let areaIndex = Area.id.substring(0, 2);
+        let area = new Area()
+
+        area.init(function() {
+            let areaIndex = area.id.substring(0, 2);
 
             if (areaIndex === '44') {
                 $('.mall-local-item').addClass('fn-hide');
 
-                if (cityListOfGuangZhou.join('').indexOf(Area.id) >= 0) {
+                if (cityListOfGuangZhou.join('').indexOf(area.id) >= 0) {
                     $('.mall-local-guangzhou').removeClass('fn-hide');
                     $('.mall-local-header span').html('广州');
                 } else {

@@ -12226,72 +12226,104 @@ function updateLink(linkElement, obj) {
 "use strict";
 
 
-var React = __webpack_require__(52);
-var $ = __webpack_require__(54);
-var Cookie = __webpack_require__(53);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(52);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _zepto = __webpack_require__(54);
+
+var _zepto2 = _interopRequireDefault(_zepto);
+
+var _cookie = __webpack_require__(53);
+
+var _cookie2 = _interopRequireDefault(_cookie);
 
 __webpack_require__(189);
 
-var City = React.createClass({
-    displayName: 'City',
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    getInitialState: function getInitialState() {
-        return { currentCity: '北京' };
-    },
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-    getCurrentCityFromCookie: function getCurrentCityFromCookie() {
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-        if (!!Cookie.get('cityName')) {
-            return true;
-        }
+var City = function (_React$Component) {
+    _inherits(City, _React$Component);
 
-        return false;
-    },
+    function City(props) {
+        _classCallCheck(this, City);
 
-    componentDidMount: function componentDidMount() {
+        var _this = _possibleConstructorReturn(this, (City.__proto__ || Object.getPrototypeOf(City)).call(this, props));
 
-        if (this.getCurrentCityFromCookie()) {
-            this.setState({ currentCity: Cookie.get('cityName') });
-        } else {
-            this.getCurrentCityRequest = $.ajax({
-                url: 'http://car.diandong.com/api/get_local',
-                data: {},
-                dataType: 'jsonp',
-                type: 'POST',
-                success: function (result) {
-                    this.setState({ currentCity: result.data.city });
-                    Cookie.set('cityName', result.data.city);
-                    Cookie.set('cityId', result.data.code);
-                }.bind(this)
-            });
-        }
-    },
-
-    // componentWillUnmount: function() {
-    //     this.getCurrentCityRequest.abort();
-    // },
-
-    render: function render() {
-
-        return React.createElement(
-            'div',
-            { className: 'current-city' },
-            React.createElement(
-                'i',
-                { className: 'icon' },
-                '\uE659'
-            ),
-            React.createElement(
-                'a',
-                { href: 'http://www.diandong.com/city/' },
-                this.state.currentCity
-            )
-        );
+        _this.state = {
+            currentCity: '北京'
+        };
+        return _this;
     }
-});
 
-module.exports = City;
+    _createClass(City, [{
+        key: 'getCurrentCityFromCookie',
+        value: function getCurrentCityFromCookie() {
+
+            if (!!_cookie2.default.get('cityName')) {
+                return true;
+            }
+
+            return false;
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+
+            if (this.getCurrentCityFromCookie()) {
+                this.setState({ currentCity: _cookie2.default.get('cityName') });
+            } else {
+                this.getCurrentCityRequest = _zepto2.default.ajax({
+                    url: 'http://car.diandong.com/api/get_local',
+                    data: {},
+                    dataType: 'jsonp',
+                    type: 'POST',
+                    success: function (result) {
+                        this.setState({ currentCity: result.data.city });
+                        _cookie2.default.set('cityName', result.data.city);
+                        _cookie2.default.set('cityId', result.data.code);
+                    }.bind(this)
+                });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'current-city' },
+                _react2.default.createElement(
+                    'i',
+                    { className: 'icon' },
+                    '\uE659'
+                ),
+                _react2.default.createElement(
+                    'a',
+                    { href: 'http://www.diandong.com/city/' },
+                    this.state.currentCity
+                )
+            );
+        }
+    }]);
+
+    return City;
+}(_react2.default.Component);
+
+;
+
+exports.default = City;
 
 /***/ }),
 /* 85 */
@@ -12369,13 +12401,15 @@ var Mall = function () {
     }, {
         key: 'getLocalNews',
         value: function getLocalNews() {
-            _area2.default.init(function () {
-                var areaIndex = _area2.default.id.substring(0, 2);
+            var area = new _area2.default();
+
+            area.init(function () {
+                var areaIndex = area.id.substring(0, 2);
 
                 if (areaIndex === '44') {
                     (0, _zepto2.default)('.mall-local-item').addClass('fn-hide');
 
-                    if (cityListOfGuangZhou.join('').indexOf(_area2.default.id) >= 0) {
+                    if (cityListOfGuangZhou.join('').indexOf(area.id) >= 0) {
                         (0, _zepto2.default)('.mall-local-guangzhou').removeClass('fn-hide');
                         (0, _zepto2.default)('.mall-local-header span').html('广州');
                     } else {
@@ -12468,39 +12502,56 @@ module.exports = __webpack_require__(120);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 
-    'use strict';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-    var Cookie, area;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    Cookie = __webpack_require__(53);
+var _cookie = __webpack_require__(53);
 
-    area = {
-        id: '',
-        name: '',
-        init: function init(callback) {
+var _cookie2 = _interopRequireDefault(_cookie);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Area = function () {
+    function Area() {
+        _classCallCheck(this, Area);
+    }
+
+    _createClass(Area, [{
+        key: 'init',
+        value: function init(callback) {
             this.getCityId();
             this.getCityName();
             callback && callback();
-        },
-        getCityId: function getCityId() {
-            if (Cookie.get('cityId')) {
-                this.id = Cookie.get('cityId');
-            }
-        },
-        getCityName: function getCityName() {
-            if (Cookie.get('cityName')) {
-                this.name = Cookie.get('cityName');
+        }
+    }, {
+        key: 'getCityId',
+        value: function getCityId() {
+            if (_cookie2.default.get('cityId')) {
+                this.id = _cookie2.default.get('cityId');
             }
         }
-    };
+    }, {
+        key: 'getCityName',
+        value: function getCityName() {
+            if (_cookie2.default.get('cityName')) {
+                this.name = _cookie2.default.get('cityName');
+            }
+        }
+    }]);
 
-    module.exports = area;
-}.call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    return Area;
+}();
+
+;
+
+exports.default = Area;
 
 /***/ }),
 /* 88 */
