@@ -3,7 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
-    
+
     entry: {
         vendor: [
             'react', 'react-dom'
@@ -14,6 +14,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: '[hash:6].[name].js'
+        // filename: '[name].js'
     },
 
     module: {
@@ -40,8 +41,10 @@ const config = {
 
     plugins: [
         new ExtractTextPlugin('[hash:6].[name].css'),
+        // new ExtractTextPlugin('[name].css'),
 
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: '[hash:6].vendor.bundle.js'}),
+        // new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'}),
 
         new webpack.optimize.UglifyJsPlugin({
             output: {

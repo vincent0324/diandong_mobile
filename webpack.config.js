@@ -4,7 +4,7 @@ const path = require('path');
 const config = {
 
     entry: {
-        mall: path.resolve(__dirname, 'source/components/mall/app.js')
+        guide: path.resolve(__dirname, 'source/components/guide/app.js')
     },
 
     output: {

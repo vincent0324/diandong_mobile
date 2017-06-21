@@ -9,15 +9,15 @@ class Area {
     }
 
     getCityId() {
-        if (Cookie.get('cityId')) {
-            this.id = Cookie.get('cityId');
-        }
+        this.id = Cookie.get('cityId')
+            ? Cookie.get('cityId')
+            : '1101';
     }
 
     getCityName() {
-        if (Cookie.get('cityName')) {
-            this.name = Cookie.get('cityName');
-        }
+        this.name = Cookie.get('cityName')
+            ? Cookie.get('cityName')
+            : '北京';
     }
 };
 
