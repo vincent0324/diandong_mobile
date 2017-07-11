@@ -38,11 +38,11 @@ class Footer extends React.Component {
                 <div id="footer-hotline-holder" className="footer-hotline-holder">
                     <div className="wrap">
                         <div className="footer-hotline-text fn-left">
-                            <div className="hotline-detail">购车热线：4000-990-666</div>
-                            <div className="hotline-time">周一至周日(9:00 - 21:00) 法定假日除外</div>
+                            <div className="hotline-detail">有购车疑问?加微信:diandongbangkefu</div>
+                            <div className="hotline-time">周一至周日(9:30 - 18:30) 法定假日除外</div>
                         </div>
-                        <a href="tel:4000990666" className="footer-hotline-btn fn-right">
-                            <i className="icon">&#xe634;</i>
+                        <a href="javascript:;" className="footer-hotline-btn fn-right">
+                            <i className="icon">&#xe63e;</i>
                         </a>
                     </div>
                 </div>
